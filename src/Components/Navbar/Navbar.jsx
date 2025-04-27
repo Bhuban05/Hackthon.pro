@@ -1,3 +1,4 @@
+
   export const Navbar = () =>{
     return (
 
@@ -5,7 +6,7 @@
 <section>
 
 
-<nav class="bg-blue-600 dark:border-x-gray-700">
+<nav class="bg-blue-600 dark:border-x-gray-700 w-full">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
    </div>
