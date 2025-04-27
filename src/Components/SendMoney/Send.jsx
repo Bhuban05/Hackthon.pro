@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Send = () => {
+   export const Send = () => {
   const [amount, setAmount] = useState('');
 
   const handleAmountClick = (value) => {
@@ -118,4 +118,3 @@ const Send = () => {
   );
 };
 
-export default Send;
