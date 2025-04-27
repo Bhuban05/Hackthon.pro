@@ -1,10 +1,13 @@
 
 import './App.css'
+
 import { Login } from './Components/Auth/Login'
 import { SignUp } from './Components/Auth/SignUp'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Hero } from './Components/Hero/Hero'
 import { Navbar } from './Components/Navbar/Navbar'
-import { Dash } from './Components/Dash/Dash'
+import Send from './Components/SendMoney/Send'
+import SendId from './Components/SendMoney/SendId'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 
 function App() {
@@ -17,10 +20,16 @@ function App() {
     <Route path="/login" element={<Login/>} />
     <Route path="/sign-up" element={<SignUp/>} />
     <Route path="/" element={<Navbar/>} />
-    <Route path="/dash" element={<Dash/>} />
+    <Route path="/hero" element={<Hero/>} />
+
+  
+    <Route path="/send" element={<Send/>} />
+    <Route path="/sendid" element={<SendId/>} />
 </Routes>
 </BrowserRouter>
       
+    
+     
      
       </div>
   )
