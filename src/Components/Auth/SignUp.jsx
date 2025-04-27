@@ -1,8 +1,8 @@
-const SignUp = () => {
+export const SignUp = () => {
   return (
-    <section className="bg-gradient-to-br from-blue-50 to-gray-100 min-h-screen flex items-center justify-center p-4">
+    <section className="bg-gray-800 min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+        <div className="bg-gray-700 rounded-xl shadow-2xl overflow-hidden">
       
           <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-6 text-center">
             <h1 className="text-2xl font-bold text-white">Register</h1>
@@ -121,4 +121,3 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;

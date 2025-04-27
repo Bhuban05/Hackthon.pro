@@ -1,4 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 export const Login = () => {
+  
+  const navigate = useNavigate();
+    
+  const handleClick = () => {
+    navigate('/dash');
+  };
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
@@ -42,7 +49,7 @@ export const Login = () => {
                 </div>
               </div>
 
-              {/* Password field */}
+              
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Password
@@ -163,10 +170,9 @@ export const Login = () => {
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 Don't have an account?{" "}
                 <a
-                  href="#"
                   className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
-                >
-                  Sign up
+                  onClick={handleClick}>
+                  Sign In
                 </a>
               </p>
             </div>
