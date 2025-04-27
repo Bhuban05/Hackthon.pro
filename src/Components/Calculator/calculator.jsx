@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Calculator = () => {
+  export const Calculator = () => {
   const [input, setInput] = useState('');
   const [userBalance] = useState('$1,250.00'); // Example balance
   const [accountNumber] = useState('123-456-7890'); // Example account number
@@ -106,4 +106,4 @@ const Calculator = () => {
   );
 };
 
-export default Calculator;
+
