@@ -1,5 +1,14 @@
-
+import { Navigate, useNavigate } from 'react-router-dom';
   export const Navbar = () =>{
+
+    const navigate = useNavigate();
+    
+    const handleClick = () => {
+      navigate('/login');
+    };
+    const handleClick1 = () => {
+      navigate('/sign-up');
+    };
     return (
 
  <>
@@ -23,16 +32,14 @@
     </a>
     <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
-        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-        </svg>
+        
     </button>
     <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
       <ul >
         
         <li>
-            <button  className="bg-blue-700   w-25 py-3  rounded-2xl  cursor-pointer ">Login</button>
-            <button className=" w-25 py-3  mx-2  bg-white  border-black   cursor-pointer  rounded-2xl">Sign up</button>
+            <button  className="bg-blue-600   w-25 py-3  rounded-2xl  cursor-pointer border-gray-500 hover:bg-blue-700  "  onClick={handleClick} >Login</button>
+            <button className=" w-25 py-3    mx-2  bg-gray-100  border-black hover:bg-blue-600  cursor-pointer  rounded-2xl"   onClick={handleClick1}>Sign up</button>
            
             <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-00 dark:divide-gray-00">
                <div>
