@@ -12,8 +12,6 @@ function App() {
     <div>
       
       <Hero/>
-      <Login/>
-      <SignUp/>
       <Dashboard/>
       <TransactionPage/>
       <KYCPage/>
