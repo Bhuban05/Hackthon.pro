@@ -111,7 +111,7 @@ const Hero = () => {
            
             <div className="flex flex-col items-center text-center max-w-sm">
               <img
-                className="w-17 h-17 rounded-md mb-4 object-cover"
+                className="w-30 h-30 rounded-md mb-4 object-cover"
                 src="https://images.unsplash.com/photo-1573164574396-9d251c3b6f96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60"
                 alt="Convenience - airport travel"
               />
@@ -125,7 +125,7 @@ const Hero = () => {
             <div className="flex flex-col items-center text-center max-w-sm">
               <img
                 className="w-17 h-17 rounded-md mb-4 object-cover"
-                src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60"
+                src="C:\Users\Dell\OneDrive\Desktop\Hackathon\Hackthon.pro\src\Components\images\download.jpg"
                 alt="Security system"
               />
               <h3 className="text-lg font-semibold mb-2">Security</h3>

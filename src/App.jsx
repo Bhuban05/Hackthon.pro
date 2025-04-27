@@ -1,7 +1,6 @@
 
 import './App.css'
-import Hero from './Components/Hero/Hero'
-
+import SendId from './Components/SendMoney/SendId'
 
 function App() {
 
@@ -9,7 +8,8 @@ function App() {
   return (
     <div>
       
-      <Hero/>
+    
+      <SendId/>
      
       </div>
   )
