@@ -1,22 +1,16 @@
 import React from 'react';
-import './Hero.css'; // Custom animation CSS
 
 function Hero() {
   return (
     <div className="relative overflow-hidden group">
       <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-opacity-80 bg-gray-800 text-white">
-        {/* Background floating images */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img
             src="https://img.freepik.com/premium-vector/banking-finance-banking-networking-business-global-internet-connection-financial-technology-digital-marketing-world-map-point-line-composition-earth-planet-globe-wireframe-hands-vector_127544-2396.jpg?w=1060"
             alt="Banking Background"
             className="absolute inset-0 w-full h-full object-cover opacity-60 animate-float-slow brightness-200"
           />
-          <img
-            src=""
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover opacity-60 animate-float-slower brightness-200"
-          />
+         
           <img
             src="https://img.freepik.com/free-vector/money-transfer-realistic-composition-with-credit-cards-payment-terminal-laptop-cash-blue_1284-28205.jpg?ga=GA1.1.948707587.1745726549&semt=ais_hybrid&w=740"
             alt="Crypto Floating"
@@ -24,7 +18,7 @@ function Hero() {
           />
         </div>
 
-        {/* Content Section */}
+
         <div className="relative z-10 max-w-3xl px-4 py-8 bg-opacity-90 content">
           <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 text-indigo-500 text-shadow-lg">
             Global Transaction
