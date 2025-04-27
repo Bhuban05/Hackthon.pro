@@ -1,14 +1,16 @@
 
 import './App.css'
-import Login from './Components/Auth/Login'
+import { Navbar } from './Components/Navbar/Navbar'
 
 function App() {
 
 
   return (
-   <div>
-    <Login/>
-   </div>
+   
+     
+    <div>
+      <Navbar/>
+    </div>
   )
 }
 
