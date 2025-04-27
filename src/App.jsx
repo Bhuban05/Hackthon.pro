@@ -4,6 +4,8 @@ import { Login } from './Components/Auth/Login'
 import SignUp from './Components/Auth/SignUp'
 import Hero from './Components/Hero/Hero'
 import Dashboard from './Components/Home/Home'
+import KYCPage from './Components/Home/kyc'
+import TransactionPage from './Components/Home/Transaction'
 import { Navbar } from './Components/Navbar/Navbar'
 
 function App() {
@@ -16,7 +18,10 @@ function App() {
       <Login/>
       <SignUp/>
       <Dashboard/>
+      <TransactionPage/>
+      <KYCPage/>
       </div>
+  
   )
   
 }
