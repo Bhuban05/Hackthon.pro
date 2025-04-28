@@ -4,13 +4,13 @@ export const Login = () => {
   const navigate = useNavigate();
     
   const handleClick = () => {
-    navigate('/dash');
+    navigate('/');
   };
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+      <div className="w-180">
         
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-3xl">
+        <div className="bg-white dark:bg-gray-200 rounded-xl shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-3xl">
          
           <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-6 text-center">
             <h2 className="text-3xl font-bold text-white">Welcome Back</h2>
@@ -21,14 +21,14 @@ export const Login = () => {
             <form className="space-y-6">
              
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <label className="block text-sm font-medium ">
                   Username or Email
                 </label>
                 <div className="relative">
                   <input
                     type="text"
                     required
-                    className="w-full px-4 py-3 text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-200"
+                    className="w-full  border px-4 py-3 text-black bg-gray-50 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-200"
                     placeholder="username@example.com"
                   />
                   <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -51,14 +51,14 @@ export const Login = () => {
 
               
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <label className="block text-sm font-medium text-gray-700 ">
                   Password
                 </label>
                 <div className="relative">
                   <input
                     type="password"
                     required
-                    className="w-full px-4 py-3 text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-200"
+                    className="w-full  text-black px-4 py-3  border  bg-gray-50 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-200"
                     placeholder="••••••••"
                   />
                   <button
@@ -88,7 +88,7 @@ export const Login = () => {
                 </div>
               </div>
 
-              {/* Remember me & Forgot password */}
+              
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <input
@@ -99,7 +99,7 @@ export const Login = () => {
                   />
                   <label
                     htmlFor="remember-me"
-                    className="ml-2 block text-sm text-gray-700 dark:text-gray-300"
+                    className="ml-2 block text-sm text-gray-700"
                   >
                     Remember me
                   </label>
@@ -114,36 +114,35 @@ export const Login = () => {
                 </div>
               </div>
 
-              {/* Submit button */}
+           
               <div>
                 <button
                   type="submit"
                   className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 transform hover:-translate-y-0.5"
                   onClick={handleClick} >
-                  Sign in
+                  Sign In
                 </button>
               </div>
 
-              {/* Divider */}
+        
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
+                  {/* <div className="w-full border-t border-gray-300 dark:border-gray-600"></div> */}
                 </div>
-                <div className="relative flex justify-center text-sm">
+                {/* <div className="relative flex justify-center text-sm">
                   <span className="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">
                     Or continue with
                   </span>
-                </div>
+                </div> */}
               </div>
 
-              {/* Social login */}
               <div className="grid grid-cols-2 gap-3">
-                <button
+                {/* <button
                   type="button"
-                  className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm bg-white dark:bg-gray-700 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+                  className="w-full inline-flex justify-center py-2 px-4 border border-gray-300  rounded-lg shadow-sm bg-whit text-sm font-medium text-gray-700 bg-blue-700  "
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="w-5 h-5 bg-white"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -161,18 +160,18 @@ export const Login = () => {
                   >
                     <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
                   </svg>
-                </button>
+                </button> */}
               </div>
             </form>
 
-            {/* Registration link */}
+          
             <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-gray-800 dark:text-gray-400">
                 Don't have an account?{" "}
                 <a
                   className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
                  >
-                  Sign In
+                  Sign Up
                 </a>
               </p>
             </div>
