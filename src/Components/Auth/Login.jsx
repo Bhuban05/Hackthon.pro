@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router';
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -174,12 +176,11 @@ export const Login = () => {
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-800">
                 Don't have an account?{" "}
-                <a
-                  href="#"
+                <NavLink to = "/signup"
                   className="font-medium text-blue-600 hover:text-blue-500 transition-colors"
                 >
                   Sign Up
-                </a>
+                </NavLink>
               </p>
             </div>
           </div>
