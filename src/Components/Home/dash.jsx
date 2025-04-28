@@ -13,7 +13,7 @@ export default function Dash() {
   };
 
   const handleScannerClick = () => {
-    setPopupText("QR Scanner Feature Coming Soon!");
+    setPopupText("Camera Feature Coming Soon!");
     setShowPopup(true);
   };
 
@@ -90,19 +90,19 @@ export default function Dash() {
             <span className="text-xs mt-1">Home</span>
           </div>
 
-          {/* QR Scanner */}
+          {/* Scanner (with Camera Icon) */}
           <div className="flex flex-col items-center">
             <button 
               onClick={handleScannerClick}
               className="w-14 h-14 bg-gradient-to-r from-blue-700 to-blue-500 rounded-full flex items-center justify-center shadow-lg hover:animate-pulse transition"
             >
               <img 
-                src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" 
-                alt="QR Scanner" 
+                src="https://cdn-icons-png.flaticon.com/512/685/685655.png" 
+                alt="Camera Icon" 
                 className="w-8 h-8" 
               />
             </button>
-            <span className="text-xs mt-1 text-center">QR Scanner</span>
+            <span className="text-xs mt-1 text-center">Scanner</span>
           </div>
 
           {/* Feedback & Support */}
