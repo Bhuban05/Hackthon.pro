@@ -1,192 +1,187 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import viber from "../images/viber.jpg";
-  export const Navbar = () =>{
+import video from '../images/video.gif'
+export const Navbar = () => {
 
-     const navigate = useNavigate();
-    
-    const handleClick = () => {
-      navigate('/login');
-    };
-    const handleClick1 = () => {
-      navigate('/sign-up');
-    };
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/login');
+  };
+  const handleClick1 = () => {
+    navigate('/sign-up');
+  };
 
 
 
-    const features = [
-      {
-        title: 'Currency Loading',
-        category: 'Finance',
-        description: 'Easily load your travel card with foreign currencies in real-time.',
-        icon: (
-          <svg className="w-12 h-12 text-indigo-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path d="M12 8c-1.657 0-3 1.343-3 3h2l-3 4-3-4h2c0-2.761 2.239-5 5-5s5 2.239 5 5c0 1.657-1.343 3-3 3h-1v-2h1c.552 0 1-.448 1-1s-.448-1-1-1z" />
-          </svg>
-        ),
-      },
-      {
-        title: 'Local Transactions',
-        category: 'Convenience',
-        description: 'Make seamless transactions in local currencies without extra fees.',
-        icon: (
-          <svg className="w-12 h-12 text-green-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path d="M3 10h1l3 9h11l3-9h1M9 21h6M10 5h4M12 3v2" />
-          </svg>
-        ),
-      },
-      {
-        title: 'Multi-Currency Support',
-        category: 'Flexibility',
-        description: 'Manage and switch between multiple currencies effortlessly in one app.',
-        icon: (
-          <svg className="w-12 h-12 text-pink-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path d="M12 8c1.1 0 2 .9 2 2h2c0-2.21-1.79-4-4-4V4l-4 4 4 4V8zM12 16c-1.1 0-2-.9-2-2H8c0 2.21 1.79 4 4 4v4l4-4-4-4v4z" />
-          </svg>
-        ),
-      },
-    ];
-  
-    const testimonials = [
-      {
-        name: 'Bibek Dhungana',
-        image: 'https://randomuser.me/api/portraits/men/44.jpg',
-        rating: '★★★★★',
-        feedback: 'The app simplifies currency conversion, making my travels stress-free. Highly recommend!',
-      },
-      {
-        name: 'Himal Subedi',
-        image: 'https://randomuser.me/api/portraits/men/32.jpg',
-        rating: '★★★★★',
-        feedback: 'Fast and accurate currency rates every time. A must-have for globetrotters!',
-      },
-      {
-        name: 'Bhuban Bhandari',
-        image: 'https://randomuser.me/api/portraits/men/68.jpg',
-        rating: '★★★★★',
-        feedback: 'A lifesaver for navigating local currencies abroad. Intuitive and reliable!',
-      },
-    ];
-  
-    const [currentTestimonial, setCurrentTestimonial] = useState(0);
-    const [fade, setFade] = useState(true);
-  
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setFade(false);
-        setTimeout(() => {
-          setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-          setFade(true);
-        }, 300); 
-      }, 3000); 
-  
-      return () => clearInterval(interval);
-    }, [testimonials.length]);
-  
-    const handleDotClick = (index) => {
+  const features = [
+    {
+      title: 'Currency Loading',
+      category: 'Finance',
+      description: 'Easily load your travel card with foreign currencies in real-time.',
+      icon: (
+        <svg className="w-12 h-12 text-indigo-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path d="M12 8c-1.657 0-3 1.343-3 3h2l-3 4-3-4h2c0-2.761 2.239-5 5-5s5 2.239 5 5c0 1.657-1.343 3-3 3h-1v-2h1c.552 0 1-.448 1-1s-.448-1-1-1z" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Local Transactions',
+      category: 'Convenience',
+      description: 'Make seamless transactions in local currencies without extra fees.',
+      icon: (
+        <svg className="w-12 h-12 text-green-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path d="M3 10h1l3 9h11l3-9h1M9 21h6M10 5h4M12 3v2" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Multi-Currency Support',
+      category: 'Flexibility',
+      description: 'Manage and switch between multiple currencies effortlessly in one app.',
+      icon: (
+        <svg className="w-12 h-12 text-pink-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path d="M12 8c1.1 0 2 .9 2 2h2c0-2.21-1.79-4-4-4V4l-4 4 4 4V8zM12 16c-1.1 0-2-.9-2-2H8c0 2.21 1.79 4 4 4v4l4-4-4-4v4z" />
+        </svg>
+      ),
+    },
+  ];
+
+  const testimonials = [
+    {
+      name: 'Bibek Dhungana',
+      image: 'https://randomuser.me/api/portraits/men/44.jpg',
+      rating: '★★★★★',
+      feedback: 'The app simplifies currency conversion, making my travels stress-free. Highly recommend!',
+    },
+    {
+      name: 'Himal Subedi',
+      image: 'https://randomuser.me/api/portraits/men/32.jpg',
+      rating: '★★★★★',
+      feedback: 'Fast and accurate currency rates every time. A must-have for globetrotters!',
+    },
+    {
+      name: 'Bhuban Bhandari',
+      image: 'https://randomuser.me/api/portraits/men/68.jpg',
+      rating: '★★★★★',
+      feedback: 'A lifesaver for navigating local currencies abroad. Intuitive and reliable!',
+    },
+  ];
+
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
       setFade(false);
       setTimeout(() => {
-        setCurrentTestimonial(index);
+        setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
         setFade(true);
       }, 300);
-    };
-    return (
+    }, 3000);
 
- <>
-<section>
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
+
+  const handleDotClick = (index) => {
+    setFade(false);
+    setTimeout(() => {
+      setCurrentTestimonial(index);
+      setFade(true);
+    }, 300);
+  };
+  return (
+
+    <>
+      <section>
 
 
-<nav className="bg-blue-600 dark:border-x-gray-700 w-full">
-  <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <nav className="bg-blue-600 dark:border-x-gray-700 w-full">
+          <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
-   </div>
-    </nav>
+          </div>
+        </nav>
 
-</section>
-        
+      </section>
 
-<nav className="bg-white border-gray-200 dark:bg-gray-100 dark:border-x-gray-700">
-  <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src={viber} class="h-15" alt="wallet Logo" />
-        <span className="self-center text-2xl font-semibold whitespace-nowrap text-cyan-400">Global Wallet</span>
-    </a>
-    <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
-        <span className="sr-only">Open main menu</span>
-        
-    </button>
-    <div className="hidden w-full md:block md:w-auto" id="navbar-dropdown">
-      <ul >
-        
-        <li>
-            <button  className="bg-blue-600   w-25 py-3  rounded-2xl  cursor-pointer border-gray-500 hover:bg-blue-700  "  onClick={handleClick} >Login</button>
-            <button className=" w-25 py-3    mx-2  bg-gray-100  border-black hover:bg-blue-600  cursor-pointer  rounded-2xl"   onClick={handleClick1}>Sign up</button>
-           
-            <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-00 dark:divide-gray-00">
-               <div>
-              
-               </div>
-                <div className="py-1">
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+
+      <nav className="bg-white border-gray-200 dark:bg-gray-100 dark:border-x-gray-700">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src={viber} class="h-15" alt="wallet Logo" />
+            <span className="self-center text-2xl font-semibold whitespace-nowrap text-cyan-400">Global Wallet</span>
+          </a>
+          <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
+            <span className="sr-only">Open main menu</span>
+
+          </button>
+          <div className="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+            <ul >
+
+              <li>
+                <button className="bg-blue-600   w-25 py-3  rounded-2xl  cursor-pointer border-gray-500 hover:bg-blue-700  " onClick={handleClick} >Login</button>
+                <button className=" w-25 py-3    mx-2  bg-gray-100  border-black hover:bg-blue-600  cursor-pointer  rounded-2xl" onClick={handleClick1}>Sign up</button>
+
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-00 dark:divide-gray-00">
+                  <div>
+
+                  </div>
+                  <div className="py-1">
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                  </div>
                 </div>
-            </div>
-        </li>
-       
-      </ul>
-    </div>
-  </div>
-</nav>
+              </li>
 
-
-    <div className="relative overflow-hidden group">
-      <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-opacity-80 bg-gray-800 text-white">
-        {/* Background floating images */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img
-            src="https://img.freepik.com/free-vector/worldwide-connection-gray-background-illustration-vector_53876-61761.jpg"
-            alt="Banking Background"
-            className="absolute inset-0 w-full h-full object-cover opacity-60 animate-float-slow brightness-100"
-          />
-          {/* <img
-            src=""
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover opacity-60 animate-float-slower brightness-200"
-          /> */}
-          <img
-          src= "https://www.idfcfirstbank.com/content/dam/idfcfirstbank/images/blog/mobile-banking/benefits-of-mobile-banking-for-business-717x404.jpg"
-            alt="Crypto Floating"
-            className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-70 transition duration-700 ease-in-out animate-float brightness-110"
-          />
-        </div>
-
-        {/* Content Section */}
-        <div className="relative z-10 max-w-3xl px-4 py-8 bg-opacity-90 content">
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 text-indigo-500 text-shadow-lg">
-            Global Transaction
-          </h1>
-          <p className="text-lg md:text-3xl max-w-2xl mb-8 text-Tel-50 ">
-            Seamless banking and transactions across the globe. Experience the new digital economy.
-          </p>
-          <div className="flex gap-6">
-            <a
-              href="#get-started"
-              className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-6 rounded-xl transition transform hover:scale-105"
-            >
-              Get Started
-            </a>
-            <a
-              href="#learn-more"
-              className=" bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-6 rounded-xl transition transform hover:scale-105 border border-indigo-500 hover:bg-indigo-500 hover:text-white text-indigo-500 font-semibold py-3 px-6 rounded-xl transition transform hover:scale-105"
-            >
-              Learn More
-            </a>
+            </ul>
           </div>
         </div>
-      </section>
-    </div>
-  
+      </nav>
 
-    <section className="py-16 px-8 bg-white">
+
+      <div className="relative overflow-hidden group">
+        <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-opacity-80 bg-gray-800 text-white">
+          {/* Background floating images */}
+          {<div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <img
+              src={video}
+              alt="Banking Background"
+              className="absolute inset-0 w-full h-full object-cover opacity-80 animate-float-slow brightness-50"
+            />
+
+
+          </div>
+          }
+
+
+          {/* Content Section */}
+          <div className="relative z-10 max-w-3xl px-4 py-8 bg-opacity-90 content">
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 text-indigo-500 text-shadow-lg">
+              Global Transaction
+            </h1>
+            <p className="text-lg md:text-3xl max-w-2xl mb-8 text-Tel-50 ">
+              Seamless banking and transactions across the globe. Experience the new digital economy.
+            </p>
+            <div className="flex gap-6">
+              <a
+                href="#get-started"
+                className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-6 rounded-xl transition transform hover:scale-105"
+              >
+                Get Started
+              </a>
+              <a
+                href="#learn-more"
+                className=" bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-6 rounded-xl transition transform hover:scale-105 border border-indigo-500 hover:bg-indigo-500 hover:text-white text-indigo-500 font-semibold py-3 px-6 rounded-xl transition transform hover:scale-105"
+              >
+                Learn More
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+
+      <section className="py-16 px-8 bg-white">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-12">Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -207,13 +202,13 @@ import viber from "../images/viber.jpg";
         </div>
       </section>
 
-      
+
       <section className="px-6 py-12 bg-white">
-        
+
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-10">User Benefits</h2>
           <div className="flex flex-col md:flex-row justify-center gap-10">
-           
+
             <div className="flex flex-col items-center text-center max-w-sm">
               <img
                 className="w-17 h-17 rounded-md mb-4 object-cover"
@@ -226,7 +221,7 @@ import viber from "../images/viber.jpg";
               </p>
             </div>
 
-            
+
             <div className="flex flex-col items-center text-center max-w-sm">
               <img
                 className="w-17 h-17 rounded-md mb-4 object-cover"
@@ -241,7 +236,7 @@ import viber from "../images/viber.jpg";
           </div>
         </div>
 
-        
+
         <div className="text-center">
           <h2 className="text-3xl font-bold mb-10">Hear from our awesome users!</h2>
           <div className="flex justify-center">
@@ -263,7 +258,7 @@ import viber from "../images/viber.jpg";
             </div>
           </div>
 
-          
+
           <div className="flex justify-center mt-6 space-x-2">
             {testimonials.map((_, idx) => (
               <button
@@ -275,27 +270,27 @@ import viber from "../images/viber.jpg";
           </div>
         </div>
       </section>
-       {/* Footer */}
-       <footer className="bg-indigo-900 text-gray-300 py-10">
-         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-           <div className="mb-6 md:mb-0">
-             <h3 className="text-xl font-bold">Global wallet corp</h3>
-             <p className="text-sm mt-2">Simplifying your global transactions, one tap at a time.</p>
-           </div>
-           <div className="flex space-x-6">
-             <a href="#" className="hover:text-white">Privacy Policy</a>
-             <a href="#" className="hover:text-white">Terms of Service</a>
-             <a href="#" className="hover:text-white">Contact Us</a>
-           </div>
-         </div>
-         <div className="text-center text-gray-400 text-xs mt-6">
-           © 2025 Global Wallet. Designed by CodeCrafters.
-         </div>
-       </footer>
+      {/* Footer */}
+      <footer className="bg-indigo-900 text-gray-300 py-10">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-6 md:mb-0">
+            <h3 className="text-xl font-bold">Global wallet corp</h3>
+            <p className="text-sm mt-2">Simplifying your global transactions, one tap at a time.</p>
+          </div>
+          <div className="flex space-x-6">
+            <a href="#" className="hover:text-white">Privacy Policy</a>
+            <a href="#" className="hover:text-white">Terms of Service</a>
+            <a href="#" className="hover:text-white">Contact Us</a>
+          </div>
+        </div>
+        <div className="text-center text-gray-400 text-xs mt-6">
+          © 2025 Global Wallet. Designed by CodeCrafters.
+        </div>
+      </footer>
 
 
-</>
+    </>
 
-    );
+  );
 
 }
