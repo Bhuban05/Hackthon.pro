@@ -2,55 +2,82 @@ import React, { useState } from 'react';
 
 const Calculator = () => {
   const [input, setInput] = useState('');
-  const [userBalance] = useState('$1,250.00'); // Example balance
+  const [userBalance] = useState(1250.00); // Balance stored as number in USD
   const [accountNumber] = useState('123-456-7890'); // Example account number
   const [isPaymentDone, setIsPaymentDone] = useState(false); // Payment status
+
+  // Conversion Rate: 1 USD = 130 NPR
+  const conversionRate = 130;
 
   const handleButtonClick = (value) => {
     setInput((prev) => prev + value);
   };
 
   const handleSend = () => {
-    if (input) {
-      setIsPaymentDone(true);
+    const sendAmountNPR = parseFloat(input);
+
+    if (!input || isNaN(sendAmountNPR)) {
+      alert('Please enter a valid amount.');
+      return;
     }
+
+    // Convert the entered NPR to USD for checking against balance
+    const sendAmountUSD = sendAmountNPR / conversionRate;
+
+    if (sendAmountUSD > userBalance) {
+      alert('Cannot send amount greater than balance!');
+      return;
+    }
+
+    setIsPaymentDone(true);
   };
 
   const handleBackspace = () => {
     setInput((prev) => prev.slice(0, -1));
   };
 
+  // Calculate equivalent USD (for the entered NPR)
+  const equivalentUSD = parseFloat(input) / conversionRate;
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-black">
       {!isPaymentDone ? (
-        <div className="bg-gray-900 p-8 rounded-2xl shadow-lg w-full max-w-xs">
-          <h1 className="text-2xl font-bold text-center mb-6 text-white">User Info</h1>
+        <div className="bg-gray-900 p-6 rounded-2xl shadow-lg w-full max-w-xs">
+          <h1 className="text-xl font-bold text-center mb-4 text-white">User Info</h1>
 
-          {/* User Balance */}
-          <div className="bg-gray-800 p-4 rounded-xl text-xl font-semibold text-center mb-4">
+          {/* User Balance (USD) */}
+          <div className="bg-gray-800 p-3 rounded-xl text-lg font-semibold text-center mb-3">
             <span className="text-gray-400">Balance:</span>
-            <div className="text-green-400">{userBalance}</div>
+            <div className="text-green-400">${userBalance.toFixed(2)}</div> {/* Dollar sign shown here */}
           </div>
 
           {/* User Account Number */}
-          <div className="bg-gray-800 p-4 rounded-xl text-xl font-semibold text-center mb-4">
+          <div className="bg-gray-800 p-3 rounded-xl text-lg font-semibold text-center mb-3">
             <span className="text-gray-400">Account Number:</span>
             <div className="text-gray-400">{accountNumber}</div>
           </div>
 
-          {/* Send Amount Display */}
-          <div className="bg-gray-800 rounded-lg p-4 text-2xl mb-4 text-right min-h-[60px]">
-            <span className="text-gray-400 text-sm">Send Amount: </span>
+          {/* Send Amount Display (NPR) */}
+          <div className="bg-gray-800 rounded-lg p-3 text-xl mb-3 text-right min-h-[50px]">
+            <span className="text-gray-400 text-sm">Send Amount (NPR): </span>
             <span className="text-white">{input || '0'}</span>
           </div>
 
+          {/* Equivalent USD Amount Display (with minus) */}
+          {input && (
+            <div className="bg-gray-800 rounded-lg p-3 text-xl mb-3 text-right min-h-[50px]">
+              <span className="text-gray-400 text-sm">Equivalent (USD): </span>
+              <span className="text-red-500">-${equivalentUSD.toFixed(2)}</span>
+            </div>
+          )}
+
           {/* Number Buttons */}
-          <div className="grid grid-cols-3 gap-2 mb-4">
+          <div className="grid grid-cols-3 gap-2 mb-3">
             {[1,2,3,4,5,6,7,8,9].map((num) => (
               <button
                 key={num}
                 onClick={() => handleButtonClick(num.toString())}
-                className="bg-blue-600 text-white py-3 rounded-xl text-lg font-bold hover:bg-blue-700 transition"
+                className="bg-blue-600 text-white py-2 rounded-xl text-lg font-bold hover:bg-blue-700 transition"
               >
                 {num}
               </button>
@@ -59,7 +86,7 @@ const Calculator = () => {
             {/* 0 Button */}
             <button
               onClick={() => handleButtonClick('0')}
-              className="bg-blue-600 text-white py-3 rounded-xl text-lg font-bold hover:bg-blue-700 transition"
+              className="bg-blue-600 text-white py-2 rounded-xl text-lg font-bold hover:bg-blue-700 transition"
             >
               0
             </button>
@@ -67,7 +94,7 @@ const Calculator = () => {
             {/* . Button */}
             <button
               onClick={() => handleButtonClick('.')}
-              className="bg-blue-600 text-white py-3 rounded-xl text-xl font-bold hover:bg-blue-700 transition"
+              className="bg-blue-600 text-white py-2 rounded-xl text-xl font-bold hover:bg-blue-700 transition"
             >
               .
             </button>
@@ -75,7 +102,7 @@ const Calculator = () => {
             {/* × (Backspace) Button */}
             <button
               onClick={handleBackspace}
-              className="bg-red-600 text-white py-3 rounded-xl text-xl font-bold hover:bg-red-700 transition"
+              className="bg-red-600 text-white py-2 rounded-xl text-xl font-bold hover:bg-red-700 transition"
             >
               ×
             </button>
@@ -91,14 +118,14 @@ const Calculator = () => {
         </div>
       ) : (
         // Payment Successful Screen
-        <div className="flex flex-col items-center bg-gray-900 p-8 rounded-2xl shadow-lg w-full max-w-xs">
+        <div className="flex flex-col items-center bg-gray-900 p-6 rounded-2xl shadow-lg w-full max-w-xs">
           <img
             src="https://cashfreelogo.cashfree.com/website/landings/instant-settlements/payment-done.png"
             alt="Payment Successful"
             className="w-48 h-48 mb-6" // Bigger Image
           />
           <p className="text-gray-400 text-center text-lg">
-            Your payment of <strong className="text-white">${input}</strong> has been sent successfully.
+            Your payment of <strong className="text-white">{input} NPR</strong> (equivalent to <strong className="text-red-500">-${equivalentUSD.toFixed(2)}</strong>) has been sent successfully.
           </p>
         </div>
       )}

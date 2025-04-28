@@ -1,13 +1,34 @@
 import React, { useState } from "react";
+import Calculator from "../Calculator/calculator"; 
 
 const SendId = () => {
-  const [selectedTab, setSelectedTab] = useState("mobile");
+  const [selectedTab, setSelectedTab] = useState("wallet");
+  const [walletNumber, setWalletNumber] = useState("");
+  const [proceed, setProceed] = useState(false);
+
+  const handleProceed = () => {
+    const STATIC_WALLET_NUMBER = "00000";
+    const walletNumberRegex = /^[0-9]{5}$/; 
+
+    if (walletNumberRegex.test(walletNumber)) {
+      if (walletNumber === STATIC_WALLET_NUMBER) {
+        setProceed(true); 
+      } else {
+        alert("Gwallent ID incorrect");
+      }
+    } else {
+      alert("Gwallent ID incorrect");
+    }
+  };
+
+  if (proceed) {
+    return <Calculator />;
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#0f0f10]">
-      {/* Phone Frame */}
       <div className="w-[370px] bg-[#1c1c1e] rounded-3xl shadow-2xl p-4">
-        {/* Header */}
+        
         <div className="flex items-center space-x-3 mb-6">
           <button className="text-white text-2xl">&#8592;</button>
           <h1 className="text-white text-xl font-semibold">Send Money</h1>
@@ -16,7 +37,7 @@ const SendId = () => {
           </div>
         </div>
 
-        {/* Balance Card */}
+        
         <div className="bg-[#2c2c2e] p-4 rounded-2xl flex justify-between items-center mb-6">
           <div>
             <div className="flex items-baseline space-x-1">
@@ -28,9 +49,9 @@ const SendId = () => {
           <button className="text-blue-400 text-2xl">&#10227;</button>
         </div>
 
-        {/* Recent Fund Transfers */}
+       
         <div className="mb-6">
-          <h2 className="text-white text-lg mb-2">Recent Fund Transfers</h2>
+          <h2 className="text-white text-lg mb-2">Recent Transactions</h2>
           <div className="flex space-x-2 overflow-x-auto">
             <div className="bg-[#2c2c2e] p-3 rounded-xl text-center min-w-[100px]">
               <p className="text-white text-sm truncate">Som Kumar Surk...</p>
@@ -47,18 +68,18 @@ const SendId = () => {
           </div>
         </div>
 
-        {/* Tabs for Mobile Number / Email */}
+       
         <div className="flex justify-center mb-4">
           <div className="flex bg-[#2c2c2e] rounded-xl overflow-hidden">
             <button
               className={`flex-1 py-2 font-semibold ${
-                selectedTab === "mobile"
+                selectedTab === "wallet"
                   ? "text-blue-400 border-b-2 border-blue-400"
                   : "text-gray-400"
               }`}
-              onClick={() => setSelectedTab("mobile")}
+              onClick={() => setSelectedTab("wallet")}
             >
-              Mobile Number
+              Gwallent Number
             </button>
             <button
               className={`flex-1 py-2 font-semibold ${
@@ -73,15 +94,17 @@ const SendId = () => {
           </div>
         </div>
 
-        {/* Input Field */}
+        
         <div className="mb-6">
           <label className="block text-gray-400 mb-2 text-sm">
-            {selectedTab === "mobile" ? "Gwallent ID" : "Email Address"}
+            {selectedTab === "wallet" ? "Gwallent ID" : "Email Address"}
           </label>
           <div className="relative">
             <input
-              type={selectedTab === "mobile" ? "text" : "email"}
-              placeholder={selectedTab === "mobile" ? "Mobile Number" : "Email Address"}
+              type="text"
+              value={walletNumber}
+              onChange={(e) => setWalletNumber(e.target.value)}
+              placeholder={selectedTab === "wallet" ? "Enter Gwallent Number" : "Email Address"}
               className="w-full p-3 bg-[#2c2c2e] text-white rounded-xl focus:outline-none"
             />
             <span className="absolute right-4 top-3 text-blue-400 text-xl">
@@ -90,12 +113,15 @@ const SendId = () => {
           </div>
         </div>
 
-        {/* Proceed Button */}
-        <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-xl transition duration-300">
+       
+        <button
+          onClick={handleProceed}
+          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-xl transition duration-300"
+        >
           PROCEED
         </button>
 
-        {/* Secure Fund Transfer Info */}
+        
         <div className="mt-6 text-center">
           <p className="text-gray-400 text-sm mb-2">
             Secure Your Fund Transfer
