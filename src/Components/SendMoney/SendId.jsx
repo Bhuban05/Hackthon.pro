@@ -35,9 +35,10 @@ const SendId = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0f0f10]">
-      <div className="w-[370px] bg-[#1c1c1e] rounded-3xl shadow-2xl p-4">
+    <div className="min-h-screen flex items-center justify-center bg-[#cdcde0]">
+      <div className="w-180 bg-[#1c1c1e] rounded-3xl shadow-2xl p-4 border-4 border-[#2c2c2e]">
         
+        {/* Top Header */}
         <div className="flex items-center space-x-3 mb-6">
           <button className="text-white text-2xl">&#8592;</button>
           <h1 className="text-white text-xl font-semibold">Send Money</h1>
@@ -46,7 +47,7 @@ const SendId = () => {
           </div>
         </div>
 
-        
+        {/* Balance Info */}
         <div className="bg-[#2c2c2e] p-4 rounded-2xl flex justify-between items-center mb-6">
           <div>
             <div className="flex items-baseline space-x-1">
@@ -58,7 +59,7 @@ const SendId = () => {
           <button className="text-blue-400 text-2xl">&#10227;</button>
         </div>
 
-       
+        {/* Recent Transactions */}
         <div className="mb-6">
           <h2 className="text-white text-lg mb-2">Recent Transactions</h2>
           <div className="flex space-x-2 overflow-x-auto">
@@ -77,7 +78,7 @@ const SendId = () => {
           </div>
         </div>
 
-       
+        {/* Tab Switcher */}
         <div className="flex justify-center mb-4">
           <div className="flex bg-[#2c2c2e] rounded-xl overflow-hidden">
             <button
@@ -103,7 +104,7 @@ const SendId = () => {
           </div>
         </div>
 
-        
+        {/* Input Section */}
         <div className="mb-6">
           <label className="block text-gray-400 mb-2 text-sm">
             {selectedTab === "wallet" ? "Gwallent ID" : "Email Address"}
@@ -122,7 +123,7 @@ const SendId = () => {
           </div>
         </div>
 
-       
+        {/* Proceed Button */}
         <button
           
           className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-xl transition duration-300"
@@ -136,7 +137,7 @@ const SendId = () => {
           PROCEED
         </button>
 
-        
+        {/* Footer */}
         <div className="mt-6 text-center">
           <p className="text-gray-400 text-sm mb-2">
             Secure Your Fund Transfer
@@ -149,6 +150,7 @@ const SendId = () => {
             GWALLET SERVICE HISTORY
           </button>
         </div>
+
       </div>
     </div>
   );
