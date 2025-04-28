@@ -2,11 +2,14 @@
 import { Login } from "./Components/Auth/Login";
 import { SignUp } from "./Components/Auth/SignUp";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 
 import SendId from "./Components/SendMoney/SendId";
 import { Send } from "./Components/SendMoney/Send";
 import {Navbar} from "./Components/Navbar/Navbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom"; 
+import Calculator from "./Components/Calculator/calculator";
+import Dash from "./Components/Dash/Dash";
+
 function App() {
   return (
 
@@ -21,7 +24,7 @@ function App() {
           <Route path="/dash" element={<Dash/>} />
          <Route path="/sendid" element={<SendId/>} />
           <Route path="/send" element={<Send/>} />
-          <Route path="/calculator" element={<Calculator />} />
+       
         </Routes>
       </BrowserRouter>
     </div>
