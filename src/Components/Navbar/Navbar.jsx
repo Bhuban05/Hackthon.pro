@@ -106,7 +106,7 @@ export const Navbar = () => {
       </section>
 
 
-<nav className="bg-white border-gray-200 dark:bg-gray-100 dark:border-x-gray-700">
+<nav className=" border-gray-200 dark:bg-gray-100 dark:border-x-gray-700">
   <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src={viber} class="h-15" alt="wallet Logo" />
