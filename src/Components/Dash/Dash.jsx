@@ -24,19 +24,20 @@ export default function Dash() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex justify-center items-center p-4">
-      <div className="relative bg-black w-full max-w-[375px] rounded-xl shadow-2xl border-2 border-gray-700 flex flex-col overflow-hidden">
+    
+    <div className="min-h-screen  textgray-200-white flex justify-center items-center p-4">
+      <div className="relative    w-180 rounded-xl shadow-2xl  border-gray-700 flex flex-col overflow-hidden">
         
-        {/* Header */}
+      
         <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-800 to-blue-600">
-          <div className="flex items-center gap-3">
+          <div className="flex  items-center gap-3">
             <img
               src="https://randomuser.me/api/portraits/men/75.jpg"
               alt="Profile"
               className="w-12 h-12 rounded-full border-2 border-green-400"
             />
             <div>
-              <h1 className="text-xl font-semibold">Hi, Tourist</h1>
+              <h1 className="text-xl font-semibold">Hi, Bibek</h1>
             </div>
           </div>
           <div className="flex items-center gap-4">
@@ -45,19 +46,19 @@ export default function Dash() {
         </div>
 
         {/* Balance */}
-        <div className="p-6 bg-blue-950 text-center">
-          <h2 className="text-sm text-blue-300">Balance</h2>
-          <p className="text-3xl font-bold text-white mb-2">${dollarBalance.toFixed(2)}</p>
-          <p className="text-sm text-blue-400">NPR {nepaliBalance}</p>
+        <div className="p-6 shadow text-center">
+          <h2 className=" text-2xl text-black">Balance</h2>
+          <p className="text-3xl font-bold text-black mb-2">${dollarBalance.toFixed(2)}</p>
+          <p className="text-sm text-blue-600">NPR {nepaliBalance}</p>
         </div>
 
         {/* Money Features */}
-        <div className="p-4 grid grid-cols-2 gap-4">
-          <button className="bg-gradient-to-r from-blue-700 to-blue-500 rounded-xl p-4 flex flex-col items-center hover:scale-105 transition">
-            <img src="/load.png" alt="Load Money" className="w-8 h-8 mb-2" />
+        <div className="p-4 grid grid-cols-2 gap-4   ">
+          <button className="shadow-xl rounded-xl p-4 flex flex-col items-center hover:scale-105 hover:bg-gray-400   transition">
+            <img src="/load.png" alt="Load Money" className="w-8 h-8  mb-2" />
             <span>Load Money</span>
           </button>
-          <button className="bg-gradient-to-r from-blue-700 to-blue-500 rounded-xl p-4 flex flex-col items-center hover:scale-105 transition">
+          <button className="  shadow-xl rounded-xl p-4 flex flex-col items-center hover:bg-gray-400  hover:scale-105 transition">
             <img src="/send.png" alt="Send Money" className="w-8 h-8 mb-2" />
             <span  onClick={(e) => {
             handleClick(e);
@@ -65,7 +66,7 @@ export default function Dash() {
           </button>
         </div>
 
-        {/* Adventure & Fun */}
+       
         <div className="px-4 pt-6 pb-24">
           <h2 className="text-lg font-bold mb-2 text-blue-400">Adventure & Local Fun</h2>
           <div className="grid grid-cols-3 gap-4">
@@ -79,7 +80,7 @@ export default function Dash() {
             ].map((item, index) => (<div
                 key={index}
                 onClick={() => handleAdventureClick(item.label)}
-                className="bg-blue-900 rounded-xl p-4 flex flex-col items-center hover:scale-105 transition cursor-pointer"
+                className="shadow-xl rounded-xl p-4 flex flex-col items-center hover:scale-105 transition hover:bg-gray-400  cursor-pointer"
               >
                 <div className="text-2xl mb-2">{item.icon}</div>
                 <span className="text-center text-sm">{item.label}</span>
@@ -89,7 +90,7 @@ export default function Dash() {
         </div>
 
         {/* Footer */}
-        <div className="w-full bg-blue-950 border-t border-gray-700 flex justify-around items-center py-3 absolute bottom-0 max-w-[375px]">
+        <div className=" bottom-0  absolute w-full bg-gradient-to-r from-blue-800 to-blue-600 border-t border-gray-700 flex justify-around items-center  ">
 
           {/* Home */}
           <div className="flex flex-col items-center">
