@@ -7,7 +7,7 @@ const Calculator = () => {
   const [isPaymentDone, setIsPaymentDone] = useState(false); // Payment status
 
   // Conversion Rate: 1 USD = 130 NPR
-  const conversionRate = 130;
+  const conversionRate = 130;;;;;;
 
   const handleButtonClick = (value) => {
     setInput((prev) => prev + value);
