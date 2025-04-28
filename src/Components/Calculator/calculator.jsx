@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-  export const calculator = () => {
+  export const Calculator = () => {
   const [input, setInput] = useState('');
   const [userBalance] = useState('$1,250.00'); 
   const [accountNumber] = useState('123-456-7890'); 
@@ -8,6 +8,8 @@ import React, { useState } from 'react';
   const handleButtonClick = (value) => {
     setInput((prev) => prev + value);
   };
+
+  const conversionRate =  130
 
   const handleSend = () => {
     const sendAmountNPR = parseFloat(input);
@@ -47,17 +49,17 @@ import React, { useState } from 'react';
             <div className="text-green-400">${userBalance.toFixed(2)}</div> {/* Dollar sign shown here */}
           </div>
 
-          {/* User Account Number */}
-          <div className="bg-gray-800 p-4 rounded-xl text-xl font-semibold text-center mb-4">
-            <span className="text-gray-400">Account Number:</span>
-            <div className="text-gray-400">{accountNumber}</div>
-          </div>
+              {/* User Account Number */}
+              <div className="bg-gray-800 p-4 rounded-xl text-xl font-semibold text-center mb-4">
+                <span className="text-gray-400">Account Number:</span>
+                <div className="text-gray-400">{accountNumber}</div>
+              </div>
 
-          {/* Send Amount Display */}
-          <div className="bg-gray-800 rounded-lg p-4 text-2xl mb-4 text-right min-h-[60px]">
-            <span className="text-gray-400 text-sm">Send Amount: </span>
-            <span className="text-white">{input || '0'}</span>
-          </div>
+              {/* Send Amount Display */}
+              <div className="bg-gray-800 rounded-lg p-4 text-2xl mb-4 text-right min-h-[60px]">
+                <span className="text-gray-400 text-sm">Send Amount: </span>
+                <span className="text-white">{input || '0'}</span>
+              </div>
 
           {/* Equivalent USD Amount Display (with minus) */}
           {input && (
@@ -75,7 +77,7 @@ import React, { useState } from 'react';
                 onClick={() => handleButtonClick(num.toString())}
                 className="bg-blue-600 text-white py-2 rounded-xl text-lg font-bold hover:bg-blue-700 transition"
               >
-                {num}
+                Send
               </button>
             ))}
 

@@ -1,4 +1,3 @@
-import "./App.css";
 
 import { Login } from "./Components/Auth/Login";
 import { SignUp } from "./Components/Auth/SignUp";
@@ -9,6 +8,7 @@ import SendId from "./Components/SendMoney/SendId";
 import { Send } from "./Components/SendMoney/Send";
 
 import { ToastContainer, toast } from 'react-toastify';
+import { Calculator } from "./Components/Calculator/calculator";
 function App() {
   return (
 
@@ -19,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/" element={<Navbar />} />
+          <Route path="/calculator" element={<Calculator/>} />
          
           <Route path="/sendid" element={<SendId/>} />
           <Route path="/send" element={<Send/>} />
@@ -29,6 +30,8 @@ function App() {
     </div>
   );
 
+  
+  
 }
 
 export default App;
