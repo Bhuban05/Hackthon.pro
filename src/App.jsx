@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Navbar } from './Components/Navbar/Navbar'
 import { Dash } from './Components/Dash/Dash'
 import Calculator from './Components/Calculator/calculator'
+import Home from './Components/Home/Home'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
     <Route path="/" element={<Navbar/>} />
     <Route path="/dash" element={<Dash/>} />
     <Route path="/calculator" element={<Calculator/>} />
+    <Route path="/home" element={<Home/>} />
 
     
 </Routes>

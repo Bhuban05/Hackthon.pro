@@ -64,9 +64,8 @@ export const Hero = () => {
       setTimeout(() => {
         setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
         setFade(true);
-      }, 300); 
-    }, 3000); 
-
+      }, 300);
+    }, 3000);
     return () => clearInterval(interval);
   }, [testimonials.length]);
 
@@ -79,12 +78,43 @@ export const Hero = () => {
   };
 
   return (
-    <div>
-     
-      <section className="py-16 px-8 bg-white">
+    <div className="bg-gradient-to-b from-blue-50 to-white min-h-screen">
+
+      {/* Hero section */}
+      <section className="flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-6 py-20">
+        {/* Text */}
+        <div className="max-w-xl space-y-6 text-center md:text-left">
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight text-gray-800">
+            Simplify your <span className="text-blue-600">Currency Management</span>
+          </h1>
+          <p className="text-lg text-gray-600">
+            Load, manage and use your currencies anywhere, anytime with zero hassle. Travel smarter!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center md:justify-start">
+            <button className="px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700">
+              Get Started
+            </button>
+            <button className="px-8 py-3 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50">
+              Learn More
+            </button>
+          </div>
+        </div>
+
+        {/* Image */}
+        <div className="mt-12 md:mt-0">
+          <img
+            src="https://illustrations.popsy.co/white/currency-conversion.svg"
+            alt="Currency Illustration"
+            className="w-full max-w-md"
+          />
+        </div>
+      </section>
+
+      {/* Features */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-12">Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
             {features.map((feature, index) => (
               <div key={index} className="p-6 rounded-2xl shadow-lg hover:shadow-2xl transition">
                 <div className="flex justify-center mb-4">
@@ -102,45 +132,12 @@ export const Hero = () => {
         </div>
       </section>
 
-      
-      <section className="px-6 py-12 bg-white">
-        
+      {/* Testimonials */}
+      <section className="px-6 py-20 bg-blue-50">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-10">User Benefits</h2>
-          <div className="flex flex-col md:flex-row justify-center gap-10">
-           
-            <div className="flex flex-col items-center text-center max-w-sm">
-              <img
-                className="w-17 h-17 rounded-md mb-4 object-cover"
-                src="https://images.unsplash.com/photo-1573164574396-9d251c3b6f96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60"
-                alt="Convenience - airport travel"
-              />
-              <h3 className="text-lg font-semibold mb-2">Convenience</h3>
-              <p className="text-gray-600 text-sm">
-                Experience hassle-free travel with our app, providing real-time access to critical information like airport status, avoiding delays and ensuring a smooth journey.
-              </p>
-            </div>
-
-            
-            <div className="flex flex-col items-center text-center max-w-sm">
-              <img
-                className="w-17 h-17 rounded-md mb-4 object-cover"
-                src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60"
-                alt="Security system"
-              />
-              <h3 className="text-lg font-semibold mb-2">Security</h3>
-              <p className="text-gray-600 text-sm">
-                Your safety is paramount. Our app provides timely alerts about potential issues, keeping you informed and safe throughout your journey.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        
-        <div className="text-center">
-          <h2 className="text-3xl font-bold mb-10">Hear from our awesome users!</h2>
+          <h2 className="text-3xl font-bold mb-10">Hear from Our Happy Users</h2>
           <div className="flex justify-center">
-            <div className={`bg-gray-100 p-8 rounded-lg shadow-lg max-w-md transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`bg-white p-8 rounded-lg shadow-lg max-w-md transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}>
               <div className="flex items-center mb-4">
                 <img
                   src={testimonials[currentTestimonial].image}
@@ -152,13 +149,11 @@ export const Hero = () => {
                   <div className="text-yellow-400">{testimonials[currentTestimonial].rating}</div>
                 </div>
               </div>
-              <p className="text-gray-600 text-sm">
-                {testimonials[currentTestimonial].feedback}
-              </p>
+              <p className="text-gray-600 text-sm">{testimonials[currentTestimonial].feedback}</p>
             </div>
           </div>
 
-          
+          {/* Dots */}
           <div className="flex justify-center mt-6 space-x-2">
             {testimonials.map((_, idx) => (
               <button
@@ -170,8 +165,7 @@ export const Hero = () => {
           </div>
         </div>
       </section>
+
     </div>
   );
 };
-
-
