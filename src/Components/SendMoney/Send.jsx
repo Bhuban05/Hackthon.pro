@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-   export const Send = () => {
+export const Send = () => {
   const [amount, setAmount] = useState('');
+  const [showDetails, setShowDetails] = useState(false);
 
   const handleAmountClick = (value) => {
     setAmount(value.toString());
@@ -14,14 +15,18 @@ import React, { useState } from 'react';
     }
   };
 
+  const toggleDetailsVisibility = () => {
+    setShowDetails(!showDetails);
+  };
+
   return (
-    <div className="min-h-screen bg-gray-600 p-4 max-w-md mx-auto">
+    <div className="  shadow-2xl h-full w-180 mx-auto rounded-2xl mt-10">
       <div className="flex items-center mb-4">
         <button className="text-blue-600 text-xl">←</button>
         <h1 className="text-lg font-semibold ml-3 text-blue-800">Bank Transfer</h1>
       </div>
 
-      <div className="bg-gray-600 p-4 rounded-xl shadow-sm">
+      <div className=" p-4  rounded-xl shadow-sm">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-2">
             <div className="w-6 h-6 rounded-full bg-green-200 flex items-center justify-center">
@@ -45,24 +50,38 @@ import React, { useState } from 'react';
             </select>
           </div>
 
-          <div>
+          <div className="relative">
             <label className="text-blue-600 text-xs mb-1 block">Account Number</label>
             <input
-              type="text"
+              type={showDetails ? "text" : "password"}
               value="11807010092870"
               readOnly
-              className="w-full p-2 text-sm rounded-lg border border-blue-200 bg-blue-50"
+              className="w-full p-2 text-sm rounded-lg border border-blue-200 bg-blue-50 pr-8"
             />
+            <button
+              type="button"
+              onClick={toggleDetailsVisibility}
+              className="absolute right-2 top-7 text-blue-500 text-xs"
+            >
+              {showDetails ? '🙈' : '👁️'}
+            </button>
           </div>
 
-          <div>
+          <div className="relative">
             <label className="text-blue-600 text-xs mb-1 block">Account Holder's Name</label>
             <input
-              type="text"
+              type={showDetails ? "text" : "password"}
               value="JEEVAN BHANDARI"
               readOnly
-              className="w-full p-2 text-sm rounded-lg border border-blue-200 bg-blue-50"
+              className="w-full p-2 text-sm rounded-lg border border-blue-200 bg-blue-50 pr-8"
             />
+            <button
+              type="button"
+              onClick={toggleDetailsVisibility}
+              className="absolute right-2 top-7 text-blue-500 text-xs"
+            >
+              {showDetails ? '🙈' : '👁️'}
+            </button>
           </div>
 
           <div>
@@ -101,13 +120,13 @@ import React, { useState } from 'react';
           <div className="flex justify-between gap-3 mt-4">
             <button
               type="reset"
-              className="flex-1 bg-blue-200 hover:bg-blue-300 text-blue-800 text-sm font-medium py-2 rounded-lg"
+              className="flex-1 bg-blue-700 hover:bg-blue-800 text-white text-sm font-medium py-2 rounded-lg"
             >
               CLEAR
             </button>
             <button
               type="submit"
-              className="flex-1 bg-green-400 hover:bg-green-500 text-white text-sm font-medium py-2 rounded-lg"
+              className="flex-1 bg-green-400 hover:bg-green-500 text-gray-950 text-sm font-medium py-2 rounded-lg"
             >
               CHECK
             </button>
@@ -117,4 +136,3 @@ import React, { useState } from 'react';
     </div>
   );
 };
-
