@@ -163,18 +163,27 @@ const Calculator = () => {
             </button>
           </div>
         )
-      ) : (
+      ) : 
         // Payment Successful
-        <div className="w-180 bg-[#0d0d0edc] rounded-3xl shadow-2xl p-4 border-4 border-[#2c2c2e]">
-          <img
-            src="https://cashfreelogo.cashfree.com/website/landings/instant-settlements/payment-done.png"
-            alt="Payment Successful"
-            className="w-48 h-48 mb-6"
-          />
-          <h2 className="text-2xl font-bold text-green-400 mb-4">Payment Successful!</h2>
-          <p className="text-gray-400">Thank you for your payment.</p>
-        </div>
-      )}
+        // <div className="w-180 bg-[#0d0d0edc] rounded-3xl shadow-2xl p-4 border-4 border-[#2c2c2e]">
+<div className="flex flex-col bg-gray-600 items-center justify-center min-h-screen w-full bg-white text-black p-6">
+  <img
+    src="https://cashfreelogo.cashfree.com/website/landings/instant-settlements/payment-done.png"
+    alt="Payment Successful"
+    className="w-90 h-70 mb-8 object-contain shadow-lg "
+    class="block max-w-sm p-6  rounded-lg shadow-xl  hover:bg-gray-10"/>
+  <p class="font-normal text-gray-700 dark:text-gray-400 text-green">Thank you for your payment.</p> 
+    
+
+ {/* <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Payment Successful!</h2> */}
+
+
+ 
+</div>
+
+
+
+      }
     </div>
   );
 };

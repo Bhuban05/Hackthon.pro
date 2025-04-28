@@ -8,6 +8,10 @@ export default function Dash() {
     const handleClick = () => {
         navigate('/sendid');
       };
+    const handleClick1 = () => {
+        navigate('/');
+      };
+
   const dollarBalance = 14.87;
   const nepaliBalance = 1980;
   const [popupText, setPopupText] = useState("");
@@ -53,12 +57,12 @@ export default function Dash() {
         </div>
 
         {/* Money Features */}
-        <div className="p-4 grid grid-cols-2 gap-4   ">
-          <button className="shadow-xl rounded-xl p-4 flex flex-col items-center hover:scale-105 hover:bg-gray-400   transition">
-            <img src="/load.png" alt="Load Money" className="w-8 h-8  mb-2" />
+        <div className="p-4 grid grid-cols-2 gap-4">
+          <button className="bg-gradient-to-r from-blue-700 to-blue-500 rounded-xl p-4 flex flex-col items-center hover:scale-105 transition">
+            <img src="/load.png" alt="Load Money" className="w-8 h-8 mb-2" />
             <span>Load Money</span>
           </button>
-          <button className="  shadow-xl rounded-xl p-4 flex flex-col items-center hover:bg-gray-400  hover:scale-105 transition">
+          <button className="bg-gradient-to-r from-blue-700 to-blue-500 rounded-xl p-4 flex flex-col items-center hover:scale-105 transition">
             <img src="/send.png" alt="Send Money" className="w-8 h-8 mb-2" />
             <span  onClick={(e) => {
             handleClick(e);
@@ -93,10 +97,16 @@ export default function Dash() {
         <div className=" bottom-0  absolute w-full bg-gradient-to-r from-blue-800 to-blue-600 border-t border-gray-700 flex justify-around items-center  ">
 
           {/* Home */}
-          <div className="flex flex-col items-center">
-            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">🏠</div>
-            <span className="text-xs mt-1">Home</span>
-          </div>
+<div 
+
+  className="flex flex-col items-center cursor-pointer group"
+>
+  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center group-hover:bg-green-600 transition-all duration-300"    onClick={handleClick1}>
+    🏠
+  </div>
+  <span className="text-xs mt-1 group-hover:text-green-400 transition-all duration-300">Home</span>
+</div>
+
 
           {/* Scanner (with Camera Icon) */}
           <div className="flex flex-col items-center">
