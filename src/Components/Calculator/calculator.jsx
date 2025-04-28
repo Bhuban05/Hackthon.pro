@@ -2,143 +2,178 @@ import React, { useState } from 'react';
 
 const Calculator = () => {
   const [input, setInput] = useState('');
-  const [userBalance] = useState('$1,250.00');
+  const [userBalance] = useState(1250.00);
   const [accountNumber] = useState('123-456-7890');
-  const [isPaymentDone, setIsPaymentDone] = useState(false);
-  const [isVerifying, setIsVerifying] = useState(false);
-  const [pin, setPin] = useState('');
-  const correctPin = '0000'; // Password set to 0000
+  const [isPaymentStarted, setIsPaymentStarted] = useState(false);
+  const [isGwpinPhase, setIsGwpinPhase] = useState(false);
+  const [gwPin, setGwPin] = useState('');
+  const [showGwPin, setShowGwPin] = useState(false);
+
+  const conversionRate = 130;
+  const staticGwPin = "1234";
 
   const handleButtonClick = (value) => {
     setInput((prev) => prev + value);
   };
 
   const handleSend = () => {
-    if (input) {
-      setIsVerifying(true); // Move to PIN verification step
+    const sendAmountNPR = parseFloat(input);
+
+    if (!input || isNaN(sendAmountNPR)) {
+      alert('Please enter a valid amount.');
+      return;
     }
+
+    const sendAmountUSD = sendAmountNPR / conversionRate;
+
+    if (sendAmountUSD > userBalance) {
+      alert('Cannot send amount greater than balance!');
+      return;
+    }
+
+    // Move to GWPIN phase
+    setIsGwpinPhase(true);
   };
 
   const handleBackspace = () => {
     setInput((prev) => prev.slice(0, -1));
   };
 
-  const handlePinChange = (e) => {
-    setPin(e.target.value);
+  const handleProceedGwPin = () => {
+    if (gwPin.length !== 4) {
+      alert('GWPIN must be exactly 4 digits!');
+      return;
+    }
+    if (gwPin !== staticGwPin) {
+      alert('Incorrect GWPIN. Please try again.');
+      return;
+    }
+    setIsPaymentStarted(true);
   };
 
-  const handleVerifyPin = () => {
-    if (pin === correctPin) {
-      setIsPaymentDone(true);
-    } else {
-      alert('Incorrect PIN. Please try again.');
-      setPin('');
-    }
-  };
+  const equivalentUSD = parseFloat(input) / conversionRate;
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black">
-      {!isPaymentDone ? (
-        <div className="bg-gray-900 p-8 rounded-2xl shadow-lg w-full max-w-xs">
-          {!isVerifying ? (
-            <>
-              <h1 className="text-2xl font-bold text-center mb-6 text-white">User Info</h1>
+    <div className="flex items-center justify-center min-h-screen bg-black p-6">
+      {!isPaymentStarted ? (
+        !isGwpinPhase ? (
+          <div className="bg-gray-900 p-8 rounded-2xl shadow-lg w-full max-w-xs">
 
-              {/* User Balance */}
-              <div className="bg-gray-800 p-4 rounded-xl text-xl font-semibold text-center mb-4">
-                <span className="text-gray-400">Balance:</span>
-                <div className="text-green-400">{userBalance}</div>
-              </div>
+            {/* User Info */}
+            <h1 className="text-2xl font-bold text-center mb-6 text-white">User Info</h1>
 
-              {/* User Account Number */}
-              <div className="bg-gray-800 p-4 rounded-xl text-xl font-semibold text-center mb-4">
-                <span className="text-gray-400">Account Number:</span>
-                <div className="text-gray-400">{accountNumber}</div>
-              </div>
+            <div className="bg-gray-800 p-4 rounded-xl text-xl font-semibold text-center mb-4">
+              <span className="text-gray-400">Balance:</span>
+              <div className="text-green-400">${userBalance.toFixed(2)}</div>
+            </div>
 
-              {/* Send Amount Display */}
+            <div className="bg-gray-800 p-4 rounded-xl text-xl font-semibold text-center mb-4">
+              <span className="text-gray-400">Account Number:</span>
+              <div className="text-gray-400">{accountNumber}</div>
+            </div>
+
+            {/* Amount Section */}
+            <div className="bg-gray-800 rounded-lg p-4 text-2xl mb-4 text-right min-h-[60px]">
+              <span className="text-gray-400 text-sm">Send Amount (NPR): </span>
+              <span className="text-white">{input || '0'}</span>
+            </div>
+
+            {/* Equivalent USD */}
+            {input && (
               <div className="bg-gray-800 rounded-lg p-4 text-2xl mb-4 text-right min-h-[60px]">
-                <span className="text-gray-400 text-sm">Send Amount: </span>
-                <span className="text-white">{input || '0'}</span>
+                <span className="text-gray-400 text-sm">Equivalent (USD): </span>
+                <span className="text-red-500">-${equivalentUSD.toFixed(2)}</span>
               </div>
+            )}
 
-              {/* Number Buttons */}
-              <div className="grid grid-cols-3 gap-2 mb-4">
-                {[1,2,3,4,5,6,7,8,9].map((num) => (
-                  <button
-                    key={num}
-                    onClick={() => handleButtonClick(num.toString())}
-                    className="bg-blue-600 text-white py-3 rounded-xl text-lg font-bold hover:bg-blue-700 transition"
-                  >
-                    {num}
-                  </button>
-                ))}
-
-                {/* 0 Button */}
+            {/* Number Pad */}
+            <div className="grid grid-cols-3 gap-2 mb-4">
+              {[1,2,3,4,5,6,7,8,9].map((num) => (
                 <button
-                  onClick={() => handleButtonClick('0')}
+                  key={num}
+                  onClick={() => handleButtonClick(num.toString())}
                   className="bg-blue-600 text-white py-3 rounded-xl text-lg font-bold hover:bg-blue-700 transition"
                 >
-                  0
+                  {num}
                 </button>
+              ))}
 
-                {/* . Button */}
-                <button
-                  onClick={() => handleButtonClick('.')}
-                  className="bg-blue-600 text-white py-3 rounded-xl text-xl font-bold hover:bg-blue-700 transition"
-                >
-                  .
-                </button>
-
-                {/* × (Backspace) Button */}
-                <button
-                  onClick={handleBackspace}
-                  className="bg-red-600 text-white py-3 rounded-xl text-xl font-bold hover:bg-red-700 transition"
-                >
-                  ×
-                </button>
-              </div>
-
-              {/* Send Button */}
               <button
-                onClick={handleSend}
-                className="w-full bg-green-500 text-white py-3 rounded-xl font-semibold hover:bg-green-600 transition"
+                onClick={() => handleButtonClick('0')}
+                className="bg-blue-600 text-white py-3 rounded-xl text-lg font-bold hover:bg-blue-700 transition"
               >
-                Send
+                0
               </button>
-            </>
-          ) : (
-            // PIN Verification Screen
-            <div className="flex flex-col items-center">
-              <h2 className="text-white text-2xl font-bold mb-6">Enter Security PIN</h2>
+
+              <button
+                onClick={() => handleButtonClick('.')}
+                className="bg-blue-600 text-white py-3 rounded-xl text-xl font-bold hover:bg-blue-700 transition"
+              >
+                .
+              </button>
+
+              <button
+                onClick={handleBackspace}
+                className="bg-red-600 text-white py-3 rounded-xl text-xl font-bold hover:bg-red-700 transition"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Send Button */}
+            <button
+              onClick={handleSend}
+              className="w-full bg-green-500 text-white py-3 rounded-xl font-semibold hover:bg-green-600 transition"
+            >
+              Send
+            </button>
+
+          </div>
+        ) : (
+          // GWPIN Enter Phase
+          <div className="bg-gray-900 p-8 rounded-2xl shadow-lg w-full max-w-xs text-center">
+            <h1 className="text-2xl font-bold text-white mb-6">Enter GWPIN</h1>
+
+            <div className="relative mb-6">
               <input
-                type="password"
-                value={pin}
-                onChange={handlePinChange}
+                type={showGwPin ? 'text' : 'password'}
+                value={gwPin}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (/^\d*$/.test(val) && val.length <= 4) {
+                    setGwPin(val);
+                  }
+                }}
+                className="w-full p-3 rounded-xl bg-gray-700 text-white text-center text-2xl"
                 maxLength={4}
-                className="mb-4 px-4 py-2 rounded-lg text-center text-lg bg-gray-800 text-white focus:outline-none"
                 placeholder="****"
               />
               <button
-                onClick={handleVerifyPin}
-                className="w-full bg-green-500 text-white py-3 rounded-xl font-semibold hover:bg-green-600 transition"
+                onClick={() => setShowGwPin(!showGwPin)}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-2xl"
               >
-                Verify
+                {showGwPin ? '🙈' : '👁️'}
               </button>
             </div>
-          )}
-        </div>
+
+            <button
+              onClick={handleProceedGwPin}
+              className="w-full bg-green-500 text-white py-3 rounded-xl font-semibold hover:bg-green-600 transition"
+            >
+              Proceed
+            </button>
+          </div>
+        )
       ) : (
-        // Payment Successful Screen
+        // Payment Successful
         <div className="flex flex-col items-center bg-gray-900 p-8 rounded-2xl shadow-lg w-full max-w-xs">
           <img
             src="https://cashfreelogo.cashfree.com/website/landings/instant-settlements/payment-done.png"
             alt="Payment Successful"
             className="w-48 h-48 mb-6"
           />
-          <p className="text-gray-400 text-center text-lg">
-            Your payment of <strong className="text-white">${input}</strong> has been sent successfully.
-          </p>
+          <h2 className="text-2xl font-bold text-green-400 mb-4">Payment Successful!</h2>
+          <p className="text-gray-400">Thank you for your payment.</p>
         </div>
       )}
     </div>
