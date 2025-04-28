@@ -119,7 +119,7 @@ export const Login = () => {
                 <button
                   type="submit"
                   className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 transform hover:-translate-y-0.5"
-                >
+                  onClick={handleClick} >
                   Sign in
                 </button>
               </div>
@@ -171,7 +171,7 @@ export const Login = () => {
                 Don't have an account?{" "}
                 <a
                   className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
-                  onClick={handleClick}>
+                 >
                   Sign In
                 </a>
               </p>
