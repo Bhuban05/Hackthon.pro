@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-  export const Navbar = () =>{
+export const Navbar = () =>{
 
-     const navigate = useNavigate();
+   const navigate = useNavigate();
     
     const handleClick = () => {
       navigate('/login');
