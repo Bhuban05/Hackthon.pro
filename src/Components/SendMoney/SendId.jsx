@@ -24,10 +24,10 @@ const SendId = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-200">
-      <div className="w-180 rounded-3xl shadow-2xl p-4 bg-white">
-
-        {/* Top Bar */}
+    <div className="min-h-screen flex items-center justify-center bg-[#cdcde0]">
+      <div className="w-180 bg-[#1c1c1e] rounded-3xl shadow-2xl p-4 border-4 border-[#2c2c2e]">
+        
+        {/* Top Header */}
         <div className="flex items-center space-x-3 mb-6">
           <button className="text-black text-2xl">&#8592;</button>
           <h1 className="text-4xl font-bold">Send Money</h1>
@@ -36,8 +36,8 @@ const SendId = () => {
           </div>
         </div>
 
-        {/* Balance Card */}
-        <div className="bg-blue-700 p-4 rounded-2xl flex justify-between items-center mb-6">
+        {/* Balance Info */}
+        <div className="bg-[#2c2c2e] p-4 rounded-2xl flex justify-between items-center mb-6">
           <div>
             <div className="flex items-baseline space-x-1">
               <p className="text-blue-400 text-lg">$</p>
@@ -93,7 +93,7 @@ const SendId = () => {
           </div>
         </div>
 
-        {/* Input Field */}
+        {/* Input Section */}
         <div className="mb-6">
           <label className="block text-gray-600 mb-2 text-sm">
             {selectedTab === "wallet" ? "Gwallet ID" : "Email Address"}
@@ -126,7 +126,7 @@ const SendId = () => {
           PROCEED
         </button>
 
-        {/* Footer Info */}
+        {/* Footer */}
         <div className="mt-6 text-center">
           <p className="text-gray-400 text-sm mb-2">
             Secure Your Fund Transfer

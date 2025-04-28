@@ -161,7 +161,7 @@ export const Navbar = () => {
             </h1>
             <p className="text-lg md:text-3xl max-w-2xl mb-8 text-Tel-50 ">
               Seamless banking and transactions across the globe. Experience the new digital economy.
-            </p>
+            </p>;;;
             <div className="flex gap-6">
               <a
                 href="/login"
