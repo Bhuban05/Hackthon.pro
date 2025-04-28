@@ -4,10 +4,10 @@ const Calculator = () => {
   const [input, setInput] = useState('');
   const [userBalance] = useState(1250.00); // Balance stored as number in USD
   const [accountNumber] = useState('123-456-7890'); // Example account number
-  const [isPaymentDone, setIsPaymentDone] = useState(false); 
+  const [isPaymentDone, setIsPaymentDone] = useState(false); // Payment status
 
-
-  const conversionRate = 130;
+  // Conversion Rate: 1 USD = 130 NPR
+  const conversionRate = 130;;;;;;
 
   const handleButtonClick = (value) => {
     setInput((prev) => prev + value);
@@ -21,7 +21,7 @@ const Calculator = () => {
       return;
     }
 
-  
+    // Convert the entered NPR to USD for checking against balance
     const sendAmountUSD = sendAmountNPR / conversionRate;
 
     if (sendAmountUSD > userBalance) {
@@ -36,7 +36,7 @@ const Calculator = () => {
     setInput((prev) => prev.slice(0, -1));
   };
 
-  
+  // Calculate equivalent USD (for the entered NPR)
   const equivalentUSD = parseFloat(input) / conversionRate;
 
   return (
@@ -45,10 +45,10 @@ const Calculator = () => {
         <div className="bg-gray-900 p-6 rounded-2xl shadow-lg w-full max-w-xs">
           <h1 className="text-xl font-bold text-center mb-4 text-white">User Info</h1>
 
-          {/* User Balance (USD) /}
+          {/* User Balance (USD) */}
           <div className="bg-gray-800 p-3 rounded-xl text-lg font-semibold text-center mb-3">
             <span className="text-gray-400">Balance:</span>
-            <div className="text-green-400">${userBalance.toFixed(2)}</div> {/ Dollar sign shown here */}
+            <div className="text-green-400">${userBalance.toFixed(2)}</div> {/* Dollar sign shown here */}
           </div>
 
           {/* User Account Number */}
@@ -128,7 +128,8 @@ const Calculator = () => {
             Your payment of <strong className="text-white">{input} NPR</strong> (equivalent to <strong className="text-red-500">-${equivalentUSD.toFixed(2)}</strong>) has been sent successfully.
           </p>
         </div>
-     
+      )}
+    </div>
   );
 };
 

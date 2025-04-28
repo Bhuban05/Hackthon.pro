@@ -8,7 +8,10 @@ import SendId from "./Components/SendMoney/SendId";
 import { Send } from "./Components/SendMoney/Send";
 
 import { ToastContainer, toast } from 'react-toastify';
-import { Calculator } from "./Components/Calculator/calculator";
+import Calculator from "./Components/Calculator/calculator";
+import Dash from "./Components/Dash/Dash";
+
+
 function App() {
   return (
 
@@ -20,8 +23,8 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/" element={<Navbar />} />
           <Route path="/calculator" element={<Calculator/>} />
-         
-          <Route path="/sendid" element={<SendId/>} />
+          <Route path="/dash" element={<Dash/>} />
+         <Route path="/sendid" element={<SendId/>} />
           <Route path="/send" element={<Send/>} />
         
          

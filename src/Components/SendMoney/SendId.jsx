@@ -1,7 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 
 
 const SendId = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+      navigate('/calculator');
+    };
+
+
   const [selectedTab, setSelectedTab] = useState("wallet");
   const [walletNumber, setWalletNumber] = useState("");
   const [proceed, setProceed] = useState(false);
@@ -115,9 +124,15 @@ const SendId = () => {
 
        
         <button
-          onClick={handleProceed}
+          
           className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-xl transition duration-300"
-        >
+          onClick={(e) => {
+            handleProceed(e);
+            handleClick(e);
+          }}
+     
+       
+       >
           PROCEED
         </button>
 

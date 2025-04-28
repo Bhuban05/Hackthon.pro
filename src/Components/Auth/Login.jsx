@@ -18,13 +18,13 @@ export const Login = () => {
   
 
    
-    const staticUsername = "Bibek";
-    const staticPassword = "bibek123";
+    const staticUsername = "admin";
+    const staticPassword = "admin@123";
 
     if (username === staticUsername && password === staticPassword) {
       toast('Login successful!');
     
-      navigate('/');
+      navigate('/dash');
     } else {
       toast('Invalid username or password');
     }
