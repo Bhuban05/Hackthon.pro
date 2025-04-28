@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 const Calculator = () => {
   const [input, setInput] = useState('');
   const [userBalance] = useState(1250.00);
-  const [accountNumber] = useState('123-456-7890');
+  const [accountNumber] = useState('20820116');
   const [isPaymentStarted, setIsPaymentStarted] = useState(false);
   const [isGwpinPhase, setIsGwpinPhase] = useState(false);
   const [gwPin, setGwPin] = useState('');
   const [showGwPin, setShowGwPin] = useState(false);
 
   const conversionRate = 130;
-  const staticGwPin = "1234";
+  const staticGwPin = "0101";
 
   const handleButtonClick = (value) => {
     setInput((prev) => prev + value);
@@ -31,7 +31,6 @@ const Calculator = () => {
       return;
     }
 
-    // Move to GWPIN phase
     setIsGwpinPhase(true);
   };
 
@@ -54,10 +53,10 @@ const Calculator = () => {
   const equivalentUSD = parseFloat(input) / conversionRate;
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black p-6">
+    <div className="flex items-center justify-center min-h-screen bg-light-grey p-6">
       {!isPaymentStarted ? (
         !isGwpinPhase ? (
-          <div className="bg-gray-900 p-8 rounded-2xl shadow-lg w-full max-w-xs">
+          <div className="w-180 bg-[#0d0d0edc] rounded-3xl shadow-2xl p-4 border-4 border-[#2c2c2e]">
 
             {/* User Info */}
             <h1 className="text-2xl font-bold text-center mb-6 text-white">User Info</h1>
@@ -131,7 +130,7 @@ const Calculator = () => {
           </div>
         ) : (
           // GWPIN Enter Phase
-          <div className="bg-gray-900 p-8 rounded-2xl shadow-lg w-full max-w-xs text-center">
+          <div className="w-100 h-70 bg-[#0d0d0edc] rounded-3xl shadow-2xl p-4 border-4 border-[#2c2c2e]">
             <h1 className="text-2xl font-bold text-white mb-6">Enter GWPIN</h1>
 
             <div className="relative mb-6">
@@ -144,7 +143,7 @@ const Calculator = () => {
                     setGwPin(val);
                   }
                 }}
-                className="w-full p-3 rounded-xl bg-gray-700 text-white text-center text-2xl"
+                className="w-full p-3 rounded-xl bg-gray-700 text-white text-center text-2xl border-2 border-gray-500"
                 maxLength={4}
                 placeholder="****"
               />
@@ -158,7 +157,7 @@ const Calculator = () => {
 
             <button
               onClick={handleProceedGwPin}
-              className="w-full bg-green-500 text-white py-3 rounded-xl font-semibold hover:bg-green-600 transition"
+              className="w-full bg-green-500 text-white py-4 rounded-xl font-semibold hover:bg-green-600 transition"
             >
               Proceed
             </button>
@@ -166,7 +165,7 @@ const Calculator = () => {
         )
       ) : (
         // Payment Successful
-        <div className="flex flex-col items-center bg-gray-900 p-8 rounded-2xl shadow-lg w-full max-w-xs">
+        <div className="w-180 bg-[#0d0d0edc] rounded-3xl shadow-2xl p-4 border-4 border-[#2c2c2e]">
           <img
             src="https://cashfreelogo.cashfree.com/website/landings/instant-settlements/payment-done.png"
             alt="Payment Successful"
