@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-  export const Navbar = () =>{
+export const Navbar = () =>{
 
      const navigate = useNavigate();
     
@@ -118,8 +118,8 @@ import React, { useEffect, useState } from 'react';
       <ul >
         
         <li>
-            <button  className="bg-blue-600   w-25 py-3  rounded-2xl  cursor-pointer border-gray-500 hover:bg-blue-700  "  onClick={handleClick} >Login</button>
-            <button className=" w-25 py-3    mx-2  bg-gray-100  border-black hover:bg-blue-600  cursor-pointer  rounded-2xl"   onClick={handleClick1}>Sign up</button>
+            <button  className="bg-blue-600   w-25 py-3  rounded-2xl text-white  cursor-pointer border-gray-500 hover:bg-blue-700  "  onClick={handleClick} >Login</button>
+            <button className=" w-25 py-3    mx-2  bg-white border  border-black hover:bg-blue-600  cursor-pointer  rounded-2xl"   onClick={handleClick1}>Sign up</button>
            
             <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-00 dark:divide-gray-00">
                <div>
@@ -280,3 +280,5 @@ import React, { useEffect, useState } from 'react';
     );
 
 }
+
+
