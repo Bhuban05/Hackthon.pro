@@ -1,3 +1,4 @@
+import { IoIosRefresh } from "react-icons/io";
 import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
 
@@ -21,9 +22,8 @@ const LoadM = () => {
             <p className="text-gray-800">Balance</p>
             <h2 className="text-3xl font-semibold text-blue-600">$14.87</h2>
           </div>
-          <button className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full">
-            🔄
-          </button>
+        
+          <IoIosRefresh />
         </div>
 
         <div className="space-y-6">
@@ -41,7 +41,7 @@ const LoadM = () => {
             </div>
           </div>
 
-          {/* Load via Card */}
+       
           <div
             className="flex items-center p-4  rounded-xl shadow hover:shadow-md cursor-pointer"
             
@@ -83,16 +83,16 @@ const LoadM = () => {
                 <label className="block text-sm ">Bank/Card Name</label>
                 <input
                   type="text"
-                  placeholder="e.g. Siddhartha Bank / Visa"
+                  placeholder="Bank of America"
                   className="w-full mt-1 p-2 rounded-md  border-1 "
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-gray-300">Country</label>
+                <label className="block text-sm ">Country</label>
                 <input
                   type="text"
-                  placeholder="e.g. Nepal"
+                  placeholder="e.g. America"
                   className="w-full mt-1 p-2 rounded-md  border-1 "
                 />
               </div>
@@ -110,7 +110,7 @@ const LoadM = () => {
                 <label className="block text-sm ">SWIFT/Code</label>
                 <input
                   type="text"
-                  placeholder="e.g. SIDDNPKA / CVV"
+                  placeholder="e.g. BIC"
                   className="w-full mt-1 p-2 rounded-md  border-1 border-gray-600 "
                 />
               </div>
@@ -124,6 +124,7 @@ const LoadM = () => {
                 </button>
                 <button
                   className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                onClick={() => setIsOpen(false)}
                 >
                   Save
                 </button>
