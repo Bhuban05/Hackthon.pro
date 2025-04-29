@@ -53,34 +53,34 @@ const Calculator = () => {
   const equivalentUSD = parseFloat(input) / conversionRate;
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-light-grey p-6">
+    <div className="flex items-center justify-center min-h-screen bg-light-grey  bg-gray-200 p-6">
       {!isPaymentStarted ? (
         !isGwpinPhase ? (
-          <div className="w-180 bg-[#0d0d0edc] rounded-3xl shadow-2xl p-4 border-4 border-[#2c2c2e]">
+          <div className="w-180 rounded-3xl shadow-2xl p-4 ">
 
-            {/* User Info */}
-            <h1 className="text-2xl font-bold text-center mb-6 text-white">User Info</h1>
+           
+            <h1 className="text-2xl font-bold text-center  text-white">User Info</h1>
 
-            <div className="bg-gray-800 p-4 rounded-xl text-xl font-semibold text-center mb-4">
-              <span className="text-gray-400">Balance:</span>
+            <div className="bg-gray-200 p-4 rounded-xl text-xl font-semibold text-center mb-4">
+              <span className="">Balance:</span>
               <div className="text-green-400">${userBalance.toFixed(2)}</div>
             </div>
 
-            <div className="bg-gray-800 p-4 rounded-xl text-xl font-semibold text-center mb-4">
-              <span className="text-gray-400">Account Number:</span>
-              <div className="text-gray-400">{accountNumber}</div>
+            <div className="bg-gray-200 p-4 rounded-xl text-xl font-semibold text-center mb-4">
+              <span className="">Account Number:</span>
+              <div className="text-gray-600">{accountNumber}</div>
             </div>
 
             {/* Amount Section */}
-            <div className="bg-gray-800 rounded-lg p-4 text-2xl mb-4 text-right min-h-[60px]">
-              <span className="text-gray-400 text-sm">Send Amount (NPR): </span>
-              <span className="text-white">{input || '0'}</span>
+            <div className="bg-gray-200 rounded-lg p-4 text-2xl mb-4 text-right min-h-[60px]">
+              <span className="text-sm">Send Amount (NPR): </span>
+              <span className="">{input || '0'}</span>
             </div>
 
             {/* Equivalent USD */}
             {input && (
-              <div className="bg-gray-800 rounded-lg p-4 text-2xl mb-4 text-right min-h-[60px]">
-                <span className="text-gray-400 text-sm">Equivalent (USD): </span>
+              <div className="bg-gray-200 rounded-lg p-4 text-2xl mb-4 text-right min-h-[60px]">
+                <span className=" text-sm">Equivalent (USD): </span>
                 <span className="text-red-500">-${equivalentUSD.toFixed(2)}</span>
               </div>
             )}
@@ -122,7 +122,7 @@ const Calculator = () => {
             {/* Send Button */}
             <button
               onClick={handleSend}
-              className="w-full bg-green-500 text-white py-3 rounded-xl font-semibold hover:bg-green-600 transition"
+              className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
             >
               Send
             </button>
@@ -130,8 +130,8 @@ const Calculator = () => {
           </div>
         ) : (
           // GWPIN Enter Phase
-          <div className="w-100 h-70 bg-[#0d0d0edc] rounded-3xl shadow-2xl p-4 border-4 border-[#2c2c2e]">
-            <h1 className="text-2xl font-bold text-white mb-6">Enter GWPIN</h1>
+          <div className="w-150 h-90  rounded-3xl shadow-xl p-4 bg-gray-300 ">
+            <h1 className="text-2xl font-bold ms-45 mb-6">Enter GWPIN</h1>
 
             <div className="relative mb-6">
               <input
@@ -143,7 +143,7 @@ const Calculator = () => {
                     setGwPin(val);
                   }
                 }}
-                className="w-full p-3 rounded-xl bg-gray-700 text-white text-center text-2xl border-2 border-gray-500"
+                className="w-full p-3 rounded-xl   text-center text-2xl border-2 border-gray-500"
                 maxLength={4}
                 placeholder="****"
               />
@@ -157,24 +157,33 @@ const Calculator = () => {
 
             <button
               onClick={handleProceedGwPin}
-              className="w-full bg-green-500 text-white py-4 rounded-xl font-semibold hover:bg-green-600 transition"
+              className="w-full bg-blue-600 text-white py-4 rounded-xl font-semibold hover:bg-blue-700 transition"
             >
               Proceed
             </button>
           </div>
         )
-      ) : (
+      ) : 
         // Payment Successful
-        <div className="w-180 bg-[#0d0d0edc] rounded-3xl shadow-2xl p-4 border-4 border-[#2c2c2e]">
-          <img
-            src="https://cashfreelogo.cashfree.com/website/landings/instant-settlements/payment-done.png"
-            alt="Payment Successful"
-            className="w-48 h-48 mb-6"
-          />
-          <h2 className="text-2xl font-bold text-green-400 mb-4">Payment Successful!</h2>
-          <p className="text-gray-400">Thank you for your payment.</p>
-        </div>
-      )}
+        // <div className="w-180 bg-[#0d0d0edc] rounded-3xl shadow-2xl p-4 border-4 border-[#2c2c2e]">
+<div className="flex flex-col bg-gray-200 items-center justify-center min-h-screen w-full text-black p-6">
+  <img
+    src="https://cashfreelogo.cashfree.com/website/landings/instant-settlements/payment-done.png"
+    alt="Payment Successful"
+    className="w-90 h-70 mb-8 object-contain shadow-lg "
+    class="block max-w-sm p-6  rounded-lg shadow-xl  hover:bg-gray-10"/>
+  <p class="font-normal text-gray-800  text-2xl  mt-4  text-green">Thank you for your payment.</p> 
+    
+
+ {/* <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Payment Successful!</h2> */}
+
+
+ 
+</div>
+
+
+
+      }
     </div>
   );
 };

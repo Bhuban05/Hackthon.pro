@@ -106,8 +106,8 @@ export const Navbar = () => {
       </section>
 
 
-<nav className=" border-gray-200 dark:bg-gray-100 dark:border-x-gray-700">
-  <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+<nav className="bg-white dark:bg-gray-100 dark:border-x-gray-700">
+  <div className=" flex flex-wrap bg-white  items-center justify-between mx-auto p-4">
     <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src={viber} class="h-15" alt="wallet Logo" />
         <span className="self-center text-2xl font-semibold whitespace-nowrap text-cyan-400">Global Wallet</span>
@@ -141,7 +141,7 @@ export const Navbar = () => {
 
       <div className="relative overflow-hidden group">
         <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-opacity-80 bg-gray-800 text-white">
-          {/* Background floating images */}
+        
           {<div className="absolute inset-0 overflow-hidden pointer-events-none">
             <img
               src={video}
@@ -154,7 +154,7 @@ export const Navbar = () => {
           }
 
 
-          {/* Content Section */}
+          
           <div className="relative z-10 max-w-3xl px-4 py-8 bg-opacity-90 content">
             <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 text-indigo-500 text-shadow-lg">
               Global Transaction

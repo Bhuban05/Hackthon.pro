@@ -10,27 +10,26 @@ const LoadM = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#cdcde0]">
-      <div className="w-180 bg-[#1c1c1e] rounded-3xl shadow-2xl p-4 border-4 border-[#2c2c2e]">
+      <div className="w-180  rounded-3xl shadow-2xl p-4 ">
         <h1 className="text-2xl font-bold mb-6 text-center text-blue-400">
           Load Money
         </h1>
 
-        {/* Current Balance */}
-        <div className="flex items-center justify-between mb-8 bg-[#1a1a1a] p-4 rounded-xl">
+        
+        <div className="flex items-center justify-between mb-8 bg-gray-200 shadow p-4 rounded-xl">
           <div>
-            <p className="text-gray-400">Balance</p>
-            <h2 className="text-3xl font-semibold text-blue-300">$14.87</h2>
+            <p className="text-gray-800">Balance</p>
+            <h2 className="text-3xl font-semibold text-blue-600">$14.87</h2>
           </div>
           <button className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full">
             🔄
           </button>
         </div>
 
-        {/* Load Options */}
         <div className="space-y-6">
-          {/* Load via Bank */}
+         
           <div
-            className="flex items-center p-4 bg-[#1a1a1a] rounded-xl shadow hover:shadow-md cursor-pointer"
+            className="flex items-center p-4  rounded-xl shadow hover:shadow-md cursor-pointer"
             onClick={openPopup}
           >
             <div className="bg-blue-600 text-white rounded-full p-2 mr-4">🏦</div>
@@ -44,8 +43,8 @@ const LoadM = () => {
 
           {/* Load via Card */}
           <div
-            className="flex items-center p-4 bg-[#1a1a1a] rounded-xl shadow hover:shadow-md cursor-pointer"
-            onClick={openPopup}
+            className="flex items-center p-4  rounded-xl shadow hover:shadow-md cursor-pointer"
+            
           >
             <div className="bg-blue-700 text-white rounded-full p-2 mr-4">💳</div>
             <div>
@@ -56,10 +55,9 @@ const LoadM = () => {
             </div>
           </div>
 
-          {/* Global Payment */}
           <div
-            className="flex items-center p-4 bg-[#1a1a1a] rounded-xl shadow hover:shadow-md cursor-pointer"
-            onClick={openPopup}
+            className="flex items-center p-4  rounded-xl shadow hover:shadow-md cursor-pointer"
+          
           >
             <div className="bg-blue-800 text-white rounded-full p-2 mr-4">🌎</div>
             <div>
@@ -72,21 +70,21 @@ const LoadM = () => {
         </div>
       </div>
 
-      {/* Popup Modal for Adding Bank */}
+      
       <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center">
-          <Dialog.Panel className="bg-[#1a1a1a] p-8 rounded-xl w-full max-w-lg shadow-lg">
+          <Dialog.Panel className=" p-8  bg-gray-300 rounded-xl w-full max-w-lg shadow-lg">
             <Dialog.Title className="text-2xl font-bold text-blue-400 mb-6">
               Add Bank or Card Details
             </Dialog.Title>
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm text-gray-300">Bank/Card Name</label>
+                <label className="block text-sm ">Bank/Card Name</label>
                 <input
                   type="text"
                   placeholder="e.g. Siddhartha Bank / Visa"
-                  className="w-full mt-1 p-2 rounded-md bg-black border border-gray-600 text-white"
+                  className="w-full mt-1 p-2 rounded-md  border-1 "
                 />
               </div>
 
@@ -95,25 +93,25 @@ const LoadM = () => {
                 <input
                   type="text"
                   placeholder="e.g. Nepal"
-                  className="w-full mt-1 p-2 rounded-md bg-black border border-gray-600 text-white"
+                  className="w-full mt-1 p-2 rounded-md  border-1 "
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-gray-300">Account/Card Number</label>
+                <label className="block text-sm ">Account/Card Number</label>
                 <input
                   type="text"
                   placeholder="e.g. 5523 11xx xxxx"
-                  className="w-full mt-1 p-2 rounded-md bg-black border border-gray-600 text-white"
+                  className="w-full mt-1 p-2 rounded-md  border-1 border-gray-600 "
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-gray-300">SWIFT/Code</label>
+                <label className="block text-sm ">SWIFT/Code</label>
                 <input
                   type="text"
                   placeholder="e.g. SIDDNPKA / CVV"
-                  className="w-full mt-1 p-2 rounded-md bg-black border border-gray-600 text-white"
+                  className="w-full mt-1 p-2 rounded-md  border-1 border-gray-600 "
                 />
               </div>
 
