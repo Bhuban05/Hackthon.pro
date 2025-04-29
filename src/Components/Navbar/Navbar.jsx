@@ -10,7 +10,7 @@ export const Navbar = () => {
     navigate('/login');
   };
   const handleClick1 = () => {
-    navigate('/sign-up');
+    navigate('/signup');
   };
 
 

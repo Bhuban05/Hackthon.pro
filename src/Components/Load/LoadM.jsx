@@ -1,9 +1,12 @@
 import { IoIosRefresh } from "react-icons/io";
 import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
+import Dash from "../Dash/Dash";
 
 const LoadM = () => {
   const [isOpen, setIsOpen] = useState(false);
+  
+  
 
   const openPopup = () => {
     setIsOpen(true);
@@ -34,7 +37,7 @@ const LoadM = () => {
           >
             <div className="bg-blue-600 text-white rounded-full p-2 mr-4">🏦</div>
             <div>
-              <h3 className="text-lg font-semibold">Bank Transfer</h3>
+              <h3 className="text-lg font-semibold">Bank Details</h3>
               <p className="text-gray-400 text-sm">
                 Load from local or international bank.
               </p>
@@ -124,7 +127,7 @@ const LoadM = () => {
                 </button>
                 <button
                   className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-                onClick={() => setIsOpen(false)}
+                onClick={Dash}
                 >
                   Save
                 </button>
