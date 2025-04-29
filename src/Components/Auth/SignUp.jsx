@@ -11,8 +11,10 @@ export const SignUp = () => {
   const [success, setSuccess] = useState(false);
 
 
-  const staticEmail = "bibek@gmail.com";
-  const staticPassword = "bibek@123";
+  const staticEmail = "admin@gmail.com";
+  const staticPassword = "admin@123";
+  const staticConfirmPassword = "admin@123";
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +33,7 @@ export const SignUp = () => {
       return;
     }
 
-    if (email === staticEmail && password === staticPassword) {
+    if (email === staticEmail && password === staticPassword  && confirmPassword === staticConfirmPassword) {
       setSuccess(true);
       setError('');
       setTimeout(() => {

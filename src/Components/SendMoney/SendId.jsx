@@ -10,11 +10,11 @@ const SendId = () => {
 
   const handleProceed = () => {
     const STATIC_WALLET_NUMBER = "00000";
-    const walletNumberRegex = /^[0-9]{5}$/; // Exactly 5 digits, numbers only
+    const walletNumberRegex = /^[0-9]{5}$/;
 
     if (walletNumberRegex.test(walletNumber)) {
       if (walletNumber === STATIC_WALLET_NUMBER) {
-        navigate('/calculator'); // Proceed only if match
+        navigate('/calculator');
       } else {
         toast("Gwallet ID incorrect");
       }
@@ -24,30 +24,31 @@ const SendId = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0f0f10]">
-      <div className="w-[370px] bg-[#1c1c1e] rounded-3xl shadow-2xl p-4">
+    <div className="min-h-screen flex items-center justify-center bg-[#cdcde0]">
+      <div className="w-180  rounded-3xl shadow-2xl  p-4 ">
         
+      
         <div className="flex items-center space-x-3 mb-6">
-          <button className="text-black text-2xl">&#8592;</button>
+          <button className=" text-2xl"   onClick={() => navigate(-1)}>&#8592;</button>
           <h1 className="text-4xl font-bold">Send Money</h1>
           <div className="ml-auto text-black text-xl">
             <i className="fas fa-info-circle"></i>
           </div>
         </div>
 
-        
-        <div className="bg-[#2c2c2e] p-4 rounded-2xl flex justify-between items-center mb-6">
+       
+        <div className="bg-blue-700 p-4 rounded-2xl flex justify-between items-center mb-6">
           <div>
             <div className="flex items-baseline space-x-1">
               <p className="text-blue-400 text-lg">$</p>
-              <h2 className="text-2xl font-bold text-white">14.87</h2>
+              <h2 className="text-2xl font-bold  text-white">14.87</h2>
             </div>
             <p className="text-gray-400 text-sm mt-1">Balance</p>
           </div>
           <button className="text-blue-400 text-2xl">&#10227;</button>
         </div>
 
-        {/* Recent Transactions */}
+     
         <div className="mb-6">
           <h2 className="text-blue-700 text-lg mb-2">Recent Transactions</h2>
           <div className="space-x-2 overflow-x-auto grid grid-cols-3 gap-2">
@@ -66,9 +67,8 @@ const SendId = () => {
           </div>
         </div>
 
-        {/* Tab Switcher */}
         <div className="flex justify-center mb-4">
-          <div className="flex bg-gray-100 rounded-xl overflow-hidden">
+          <div className="flex  rounded-xl overflow-hidden">
             <button
               className={`flex-1 py-2 font-semibold ${
                 selectedTab === "wallet"
@@ -103,7 +103,7 @@ const SendId = () => {
               value={walletNumber}
               onChange={(e) => {
                 const value = e.target.value;
-                // Only allow numbers and limit to 5 digits
+                
                 if (/^\d{0,5}$/.test(value)) {
                   setWalletNumber(value);
                 }
@@ -117,24 +117,24 @@ const SendId = () => {
           </div>
         </div>
 
-        {/* Proceed Button */}
+      
         <button
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-xl transition duration-300"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition duration-300"
           onClick={handleProceed}
         >
           PROCEED
         </button>
 
-        
+  
         <div className="mt-6 text-center">
-          <p className="text-gray-400 text-sm mb-2">
+          <p className="text-gray-600 text-sm mb-2">
             Secure Your Fund Transfer
           </p>
-          <p className="text-gray-500 text-xs">
+          <p className="text-gray-700 text-xs">
             Sending money? Our new feature GWallet Service provides you a secured
             way to transfer funds to another Gwallet user or any other user.
           </p>
-          <button className="mt-2 text-blue-400 font-semibold">
+          <button className="mt-2 text-blue-600 font-semibold">
             GWALLET SERVICE HISTORY
           </button>
         </div>
