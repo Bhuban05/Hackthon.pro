@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-blue-100 to-white">
 
-      {/* Navbar */}
+      
       <nav className="flex justify-between items-center px-12 py-4 bg-white shadow-sm sticky top-0 z-50">
         <div className="text-2xl font-extrabold text-blue-700">
           Tourist Currency Converter
@@ -28,10 +28,10 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      
       <section className="flex flex-col-reverse md:flex-row items-center justify-center px-6 md:px-24 py-16 flex-grow">
         
-        {/* Left Text Content */}
+        
         <div className="flex flex-col items-start space-y-6 max-w-lg">
           <h1 className="text-4xl md:text-6xl font-bold text-gray-800 leading-tight">
             Manage your <span className="text-blue-600">Currency</span> with Ease
@@ -49,7 +49,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right Image */}
+        
         <div className="w-full md:w-1/2 mb-12 md:mb-0">
           <img
             src="https://illustrations.popsy.co/white/currency-conversion.svg"
@@ -60,7 +60,7 @@ export default function Home() {
 
       </section>
 
-      {/* Services / Actions Section */}
+      
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 px-6 text-center">
           <div className="flex flex-col items-center gap-2 hover:text-blue-600 cursor-pointer transition">
@@ -82,7 +82,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
+      
       <footer className="text-center text-gray-400 text-sm py-6">
         © 2025 Tourist Currency Converter. All rights reserved.
       </footer>

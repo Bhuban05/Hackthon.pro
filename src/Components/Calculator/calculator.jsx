@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
+import { TbHandClick } from 'react-icons/tb';
+import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 
 const Calculator = () => {
   const [input, setInput] = useState('');
   const [userBalance] = useState(1250.00);
-  const [accountNumber] = useState('20820116');
+  const [accountNumber] = useState('08279');
   const [isPaymentStarted, setIsPaymentStarted] = useState(false);
   const [isGwpinPhase, setIsGwpinPhase] = useState(false);
   const [gwPin, setGwPin] = useState('');
   const [showGwPin, setShowGwPin] = useState(false);
+  const [sentAmountNPR, setSentAmountNPR] = useState(null);
+  const [sentAmountUSD, setSentAmountUSD] = useState(null);
 
   const conversionRate = 130;
   const staticGwPin = "0101";
 
+
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/dash");	
+  }
   const handleSend = () => {
+   
+
     const sendAmountNPR = parseFloat(input);
 
     if (!input || isNaN(sendAmountNPR)) {
@@ -40,6 +51,12 @@ const Calculator = () => {
       toast('Incorrect GWPIN. Please try again.');
       return;
     }
+
+    const npr = parseFloat(input);
+    const usd = npr / conversionRate;
+    setSentAmountNPR(npr);
+    setSentAmountUSD(usd);
+
     setIsPaymentStarted(true);
   };
 
@@ -86,11 +103,10 @@ const Calculator = () => {
           
             <button
               onClick={handleSend}
-              className="w-full mt-10 bottom-0  bg-blue-600 text-white py-5 rounded-xl font-semibold hover:bg-blue-700 transition"
+              className="w-full mt-5 bottom-0  bg-blue-600 text-white py-5 rounded-xl font-semibold hover:bg-blue-700 transition"
             >
               Send
             </button>
-
           </div>
         ) : (
          
@@ -128,17 +144,28 @@ const Calculator = () => {
           </div>
         )
       ) : (
-    
-        <div className="flex flex-col bg-gray-200 items-center justify-center min-h-screen w-full text-black p-6">
-          <img
-            src="https://cashfreelogo.cashfree.com/website/landings/instant-settlements/payment-done.png"
-            alt="Payment Successful"
-            className="w-40 h-40 mb-8 object-contain shadow-lg"
-          />
-          <p className="font-normal text-gray-800 text-2xl mt-4 ">
-            Thank you for your payment.
-          </p>
-          <button className='mt-5 text-xl text-white px-5 py-3 bg-blue-700   rounded-2xl '>Done</button>
+        <div className="flex items-center justify-center min-h-screen bg-gray-200 p-6">
+          <div className="w-[400px] rounded-3xl shadow-2xl p-8 bg-white flex flex-col items-center text-center">
+            <img
+              src="https://cashfreelogo.cashfree.com/website/landings/instant-settlements/payment-done.png"
+              alt="Payment Successful"
+              className="w-48 h-48 mb-6 object-contain"
+            />
+            <h2 className="text-2xl font-bold text-green-600 mb-4">Payment Successful!</h2>
+            <p className="text-gray-700 text-lg mb-2">
+              NPR {sentAmountNPR?.toFixed(2)}
+            </p>
+            <p className="text-gray-500 text-md mb-6">
+              Equivalent to USD ${sentAmountUSD?.toFixed(2)}
+            </p>
+
+            <button
+              onClick={ handleClick}
+              className="mt-4 bg-blue-600 text-white py-3 px-8 rounded-xl font-semibold hover:bg-blue-700 transition"
+            >
+              Done
+            </button>
+          </div>
         </div>
       )}
     </div>

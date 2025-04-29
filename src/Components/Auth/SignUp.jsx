@@ -159,7 +159,7 @@ export const SignUp = () => {
                     navigate('/login');
                   }}
                 >
-                  Sign in
+                  Sign In
                 </a>
               </div>
             </form>

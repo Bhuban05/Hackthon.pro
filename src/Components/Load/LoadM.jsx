@@ -95,7 +95,7 @@ const LoadM = () => {
               </div>
 
               <div>
-                <label className="block text-sm ">Country</label>
+                <label className="block text-sm text-gray-300">Country</label>
                 <input
                   type="text"
                   placeholder="e.g. Nepal"
@@ -130,7 +130,7 @@ const LoadM = () => {
                 </button>
                 <button
                   className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-               onClick={handleClick}  >
+               handlClick={handleClick}>
                   Save
                 </button>
               </div>

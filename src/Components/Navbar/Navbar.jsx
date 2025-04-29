@@ -10,7 +10,7 @@ export const Navbar = () => {
       navigate('/login');
     };
     const handleClick1 = () => {
-      navigate('/sign-up');
+      navigate('/signup');
     };
 
 
@@ -272,7 +272,6 @@ export const Navbar = () => {
           </div>
         </div>
       </section>
-      {/* Footer */}
       <footer className="bg-indigo-900 text-gray-300 py-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
