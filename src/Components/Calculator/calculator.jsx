@@ -58,21 +58,18 @@ const Calculator = () => {
         !isGwpinPhase ? (
           <div className="w-180 rounded-3xl shadow-2xl p-4 ">
 
-           
-            <h1 className="text-2xl font-bold text-center  text-white">User Info</h1>
-
-            <div className="bg-gray-200 p-4 rounded-xl text-xl font-semibold text-center mb-4">
+            <div className="bg-gray-300 p-4 rounded-xl text-xl font-semibold text-center mb-4">
               <span className="">Balance:</span>
               <div className="text-green-400">${userBalance.toFixed(2)}</div>
             </div>
 
-            <div className="bg-gray-200 p-4 rounded-xl text-xl font-semibold text-center mb-4">
+            <div className="bg-gray-300 p-4 rounded-xl text-xl font-semibold text-center mb-4">
               <span className="">Account Number:</span>
               <div className="text-gray-600">{accountNumber}</div>
             </div>
 
             {/* Amount Section */}
-            <div className="bg-gray-200 rounded-lg p-4 text-2xl mb-4 text-right min-h-[60px]">
+            <div className="bg-gray-300 rounded-lg p-4 text-2xl mb-4 text-right min-h-[60px]">
               <span className="text-sm">Send Amount (NPR): </span>
               <span className="">{input || '0'}</span>
             </div>

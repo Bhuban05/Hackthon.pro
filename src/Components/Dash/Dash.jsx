@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Cog6ToothIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from 'react-router-dom';
 
@@ -7,10 +7,16 @@ export default function Dash() {
   const [popupText, setPopupText] = useState("");
   const [showPopup, setShowPopup] = useState(false);
 
-  const dollarBalance = 14.87;
-  const nepaliBalance = 1980;
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const profileRef = useRef(null);
 
-  const handleNavigation = (path) => navigate(path);
+  const dollarBalance = 14.87;
+  
+
+  const handleNavigation = (path) => {
+    navigate(path);
+    setShowProfileMenu(false); 
+  };
 
   const handleAdventureClick = (activity) => {
     setPopupText(`Book ${activity} - Coming Soon!`);
@@ -21,6 +27,18 @@ export default function Dash() {
     setPopupText("Camera Feature Coming Soon!");
     setShowPopup(true);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setShowProfileMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const adventures = [
     { icon: "🥾", label: "Hiking" },
@@ -37,25 +55,49 @@ export default function Dash() {
 
         {/* Header */}
         <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-800 to-blue-600">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 relative" ref={profileRef}>
             <img
               src="https://randomuser.me/api/portraits/men/5.jpg"
               alt="Profile"
-              className="w-12 h-12 rounded-full border-2 border-green-400"
+              className="w-12 h-12 rounded-full border-2 border-green-400 cursor-pointer"
+              onClick={() => setShowProfileMenu(prev => !prev)}
             />
             <h1 className="text-xl font-semibold">Hi, Bibek</h1>
+
+            {showProfileMenu && (
+              <div className="absolute left-3 top-14 w-48 bg-white rounded-md shadow-lg py-2 z-50 text-black animate-fadeIn">
+                <button 
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-300"
+                  onClick={() => handleNavigation('/profile')}
+                >
+                  Profile
+                </button>
+                <button 
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-300"
+                  onClick={() => handleNavigation('/settings')}
+                >
+                  Settings
+                </button>
+                <button 
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-300"
+                  onClick={() => handleNavigation('/login')}
+                >
+                  Logout
+                </button>
+              </div>
+            )}
           </div>
           <Cog6ToothIcon className="h-8 w-8 text-white cursor-pointer" />
         </div>
 
-       
+        {/* Balance Section */}
         <div className="p-6 shadow text-center">
           <h2 className="text-2xl text-black">Balance</h2>
           <p className="text-3xl font-bold text-black mb-2">${dollarBalance.toFixed(2)}</p>
-          <p className="text-sm text-blue-600">NPR {nepaliBalance}</p>
+          <p className="text-sm text-blue-600"></p>
         </div>
 
-     
+        {/* Load and Send Money */}
         <div className="p-4 grid grid-cols-2 gap-4">
           <button 
             className="bg-gradient-to-r from-blue-700 to-blue-500 rounded-xl p-4 flex flex-col items-center hover:scale-105 transition"
@@ -73,7 +115,7 @@ export default function Dash() {
           </button>
         </div>
 
-        {/* Adventures */}
+       
         <div className="px-4 pt-6 pb-24">
           <h2 className="text-lg font-bold mb-2 text-blue-400">Adventure & Local Fun</h2>
           <div className="grid grid-cols-3 gap-4">
@@ -90,10 +132,9 @@ export default function Dash() {
           </div>
         </div>
 
-        {/* Footer */}
         <div className="absolute bottom-0 w-full bg-gradient-to-r from-blue-800 to-blue-600 border-t border-gray-700 flex justify-around items-center">
 
-          {/* Home */}
+     
           <div
             className="flex flex-col items-center cursor-pointer group"
             onClick={() => handleNavigation('/')}
@@ -104,7 +145,7 @@ export default function Dash() {
             <span className="text-xs mt-1 group-hover:text-green-400 transition-all duration-300">Home</span>
           </div>
 
-          
+          {/* Scanner */}
           <div className="flex flex-col items-center">
             <button 
               onClick={handleScannerClick}
@@ -119,7 +160,7 @@ export default function Dash() {
             <span className="text-xs mt-1 text-center">Scanner</span>
           </div>
 
-          {/* Feedback */}
+        
           <div className="flex flex-col items-center">
             <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">💬</div>
             <span className="text-xs mt-1 text-center">Feedback</span>
@@ -127,7 +168,7 @@ export default function Dash() {
 
         </div>
 
-        {/* Popup Modal */}
+        
         {showPopup && (
           <div className="absolute inset-0 bg-black bg-opacity-80 flex flex-col justify-center items-center">
             <div className="bg-blue-900 p-6 rounded-xl text-center space-y-4">

@@ -161,17 +161,17 @@ export const Navbar = () => {
             </h1>
             <p className="text-lg md:text-3xl max-w-2xl mb-8 text-Tel-50 ">
               Seamless banking and transactions across the globe. Experience the new digital economy.
-            </p>;;;
+            </p>
             <div className="flex gap-6">
               <a
                 href="/login"
-                className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-6 rounded-xl transition transform hover:scale-105"
+                className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold   ms-50 py-3 px-6 rounded-xl transition transform hover:scale-105"
               >
                 Get Started
               </a>
               <a
                 href="#learn-more"
-                className=" bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-6 rounded-xl transition transform hover:scale-105 border border-indigo-500 hover:bg-indigo-500 hover:text-white text-indigo-500 font-semibold py-3 px-6 rounded-xl transition transform hover:scale-105"
+                className=" bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-6 rounded-xl transition transform hover:scale-105 border border-indigo-500 hover:text-white"
               >
                 Learn More
               </a>
