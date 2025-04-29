@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
+import { useNavigate } from "react-router";
 
 const LoadM = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/dash");	
+  }
+
   const [isOpen, setIsOpen] = useState(false);
 
   const openPopup = () => {
@@ -41,7 +47,7 @@ const LoadM = () => {
             </div>
           </div>
 
-          {/* Load via Card */}
+        
           <div
             className="flex items-center p-4  rounded-xl shadow hover:shadow-md cursor-pointer"
             
@@ -89,7 +95,7 @@ const LoadM = () => {
               </div>
 
               <div>
-                <label className="block text-sm text-gray-300">Country</label>
+                <label className="block text-sm ">Country</label>
                 <input
                   type="text"
                   placeholder="e.g. Nepal"
@@ -124,7 +130,7 @@ const LoadM = () => {
                 </button>
                 <button
                   className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-                >
+               onClick={handleClick}  >
                   Save
                 </button>
               </div>

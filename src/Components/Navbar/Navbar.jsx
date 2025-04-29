@@ -120,8 +120,10 @@ export const Navbar = () => {
       <ul >
         
         <li>
-            <button  className="bg-blue-600   w-25 py-3  rounded-2xl  cursor-pointer border-gray-500 hover:bg-blue-700  "  onClick={handleClick} >Login</button>
-            <button className=" w-25 py-3    mx-2  bg-gray-100  border-black hover:bg-blue-600  cursor-pointer  rounded-2xl"   onClick={handleClick1}>Sign up</button>
+          
+            <button  className="bg-blue-600 font-bold w-25 py-3  rounded-2xl text-xl  shrink-1  cursor-pointer border-gray-500 hover:bg-blue-700  "  onClick={handleClick} >Login</button>
+            <button className=" w-25 py-3    mx-2  bg-white hover:bg-gray-400  font-bold text-xl   border-gray-400  cursor-pointer  rounded-2xl"   onClick={handleClick1}>Sign up</button>
+          
            
             <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-00 dark:divide-gray-00">
                <div>

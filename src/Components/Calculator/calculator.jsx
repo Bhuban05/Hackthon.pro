@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const Calculator = () => {
   const [input, setInput] = useState('');
@@ -12,123 +13,89 @@ const Calculator = () => {
   const conversionRate = 130;
   const staticGwPin = "0101";
 
-  const handleButtonClick = (value) => {
-    setInput((prev) => prev + value);
-  };
-
   const handleSend = () => {
     const sendAmountNPR = parseFloat(input);
 
     if (!input || isNaN(sendAmountNPR)) {
-      alert('Please enter a valid amount.');
+      toast('Please enter a valid amount.');
       return;
     }
 
     const sendAmountUSD = sendAmountNPR / conversionRate;
 
     if (sendAmountUSD > userBalance) {
-      alert('Cannot send amount greater than balance!');
+      toast('Cannot send amount greater than balance!');
       return;
     }
 
     setIsGwpinPhase(true);
   };
 
-  const handleBackspace = () => {
-    setInput((prev) => prev.slice(0, -1));
-  };
-
   const handleProceedGwPin = () => {
     if (gwPin.length !== 4) {
-      alert('GWPIN must be exactly 4 digits!');
+      toast('GWPIN must be exactly 4 digits!');
       return;
     }
     if (gwPin !== staticGwPin) {
-      alert('Incorrect GWPIN. Please try again.');
+      toast('Incorrect GWPIN. Please try again.');
       return;
     }
     setIsPaymentStarted(true);
   };
 
-  const equivalentUSD = parseFloat(input) / conversionRate;
+  const equivalentUSD = parseFloat(input) / conversionRate || 0;
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-light-grey  bg-gray-200 p-6">
+    <div className="flex items-center justify-center min-h-screen bg-gray-200 p-6">
       {!isPaymentStarted ? (
         !isGwpinPhase ? (
-          <div className="w-180 rounded-3xl shadow-2xl p-4 ">
+          <div className="w-180 h-130 rounded-3xl shadow-2xl p-6 bg-white">
 
+           
             <div className="bg-gray-300 p-4 rounded-xl text-xl font-semibold text-center mb-4">
-              <span className="">Balance:</span>
-              <div className="text-green-400">${userBalance.toFixed(2)}</div>
+              <span>Balance:</span>
+              <div className="text-green-500">${userBalance.toFixed(2)}</div>
             </div>
 
-            <div className="bg-gray-300 p-4 rounded-xl text-xl font-semibold text-center mb-4">
-              <span className="">Account Number:</span>
-              <div className="text-gray-600">{accountNumber}</div>
+            
+            <div className="bg-gray-300  mt-10 p-4 rounded-xl text-xl font-semibold text-center mb-4">
+              <span>Account Number:</span>
+              <div className="text-gray-700">{accountNumber}</div>
             </div>
 
-            {/* Amount Section */}
-            <div className="bg-gray-300 rounded-lg p-4 text-2xl mb-4 text-right min-h-[60px]">
-              <span className="text-sm">Send Amount (NPR): </span>
-              <span className="">{input || '0'}</span>
+            
+            <div className="mb-4 mt-10">
+              <input
+                type="number"
+                step="0.01"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Enter Amount (NPR)"
+                className="w-full p-3 rounded-xl  border-2 border-gray-400 "
+              />
             </div>
 
-            {/* Equivalent USD */}
+           
             {input && (
-              <div className="bg-gray-200 rounded-lg p-4 text-2xl mb-4 text-right min-h-[60px]">
-                <span className=" text-sm">Equivalent (USD): </span>
+              <div className="bg-gray-200 rounded-lg p-4 text-xl mb-4 text-right min-h-[60px]">
+                <span className="text-sm">Equivalent (USD): </span>
                 <span className="text-red-500">-${equivalentUSD.toFixed(2)}</span>
               </div>
             )}
 
-            {/* Number Pad */}
-            <div className="grid grid-cols-3 gap-2 mb-4">
-              {[1,2,3,4,5,6,7,8,9].map((num) => (
-                <button
-                  key={num}
-                  onClick={() => handleButtonClick(num.toString())}
-                  className="bg-blue-600 text-white py-3 rounded-xl text-lg font-bold hover:bg-blue-700 transition"
-                >
-                  {num}
-                </button>
-              ))}
-
-              <button
-                onClick={() => handleButtonClick('0')}
-                className="bg-blue-600 text-white py-3 rounded-xl text-lg font-bold hover:bg-blue-700 transition"
-              >
-                0
-              </button>
-
-              <button
-                onClick={() => handleButtonClick('.')}
-                className="bg-blue-600 text-white py-3 rounded-xl text-xl font-bold hover:bg-blue-700 transition"
-              >
-                .
-              </button>
-
-              <button
-                onClick={handleBackspace}
-                className="bg-red-600 text-white py-3 rounded-xl text-xl font-bold hover:bg-red-700 transition"
-              >
-                ×
-              </button>
-            </div>
-
-            {/* Send Button */}
+          
             <button
               onClick={handleSend}
-              className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+              className="w-full mt-10 bottom-0  bg-blue-600 text-white py-5 rounded-xl font-semibold hover:bg-blue-700 transition"
             >
               Send
             </button>
 
           </div>
         ) : (
-          // GWPIN Enter Phase
-          <div className="w-150 h-90  rounded-3xl shadow-xl p-4 bg-gray-300 ">
-            <h1 className="text-2xl font-bold ms-45 mb-6">Enter GWPIN</h1>
+         
+          <div className="w-120 h-80 rounded-3xl shadow-2xl p-6  bg-white">
+            <h1 className="text-2xl font-bold text-center mb-6">Enter GWPIN</h1>
 
             <div className="relative mb-6">
               <input
@@ -140,13 +107,13 @@ const Calculator = () => {
                     setGwPin(val);
                   }
                 }}
-                className="w-full p-3 rounded-xl   text-center text-2xl border-2 border-gray-500"
+                className="w-full p-3 rounded-xl text-center text-2xl border-2 border-gray-500"
                 maxLength={4}
                 placeholder="****"
               />
               <button
                 onClick={() => setShowGwPin(!showGwPin)}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-2xl"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-2xl"
               >
                 {showGwPin ? '🙈' : '👁️'}
               </button>
@@ -160,27 +127,20 @@ const Calculator = () => {
             </button>
           </div>
         )
-      ) : 
-        // Payment Successful
-        // <div className="w-180 bg-[#0d0d0edc] rounded-3xl shadow-2xl p-4 border-4 border-[#2c2c2e]">
-<div className="flex flex-col bg-gray-200 items-center justify-center min-h-screen w-full text-black p-6">
-  <img
-    src="https://cashfreelogo.cashfree.com/website/landings/instant-settlements/payment-done.png"
-    alt="Payment Successful"
-    className="w-90 h-70 mb-8 object-contain shadow-lg "
-    class="block max-w-sm p-6  rounded-lg shadow-xl  hover:bg-gray-10"/>
-  <p class="font-normal text-gray-800  text-2xl  mt-4  text-green">Thank you for your payment.</p> 
+      ) : (
     
-
- {/* <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Payment Successful!</h2> */}
-
-
- 
-</div>
-
-
-
-      }
+        <div className="flex flex-col bg-gray-200 items-center justify-center min-h-screen w-full text-black p-6">
+          <img
+            src="https://cashfreelogo.cashfree.com/website/landings/instant-settlements/payment-done.png"
+            alt="Payment Successful"
+            className="w-40 h-40 mb-8 object-contain shadow-lg"
+          />
+          <p className="font-normal text-gray-800 text-2xl mt-4 ">
+            Thank you for your payment.
+          </p>
+          <button className='mt-5 text-xl text-white px-5 py-3 bg-blue-700   rounded-2xl '>Done</button>
+        </div>
+      )}
     </div>
   );
 };
